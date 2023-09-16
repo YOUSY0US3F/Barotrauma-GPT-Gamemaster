@@ -3,7 +3,6 @@ Actions = require "actions"
 LogBuffer = {}
 ElapsedTicks = 0
 LastInteracted = {}
-LastAffliction = {}
 WasUnconsious = {}
 ConfirmedDead = {}
 Equipped = {}
@@ -108,7 +107,7 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
         table.insert(LogBuffer, msg)   
  end)
 
- Hook.Add("inventoryPutItem", "player puts item in inventory", function(inventory, item, characterUser, index, swapWholeStackBool)
+ Hook.Add("inventoryPutItem", "player acquires new item or equips/unequips item", function(inventory, item, characterUser, index, swapWholeStackBool)
     if not characterUser then
         return
     end
