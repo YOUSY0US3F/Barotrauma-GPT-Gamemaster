@@ -4,7 +4,10 @@ LogBuffer = {}
 ElapsedTicks = 0
 LastInteracted = {}
 LastAffliction = {}
-LastUsed = nil
+WasUnconsious = {}
+ConfirmedDead = {}
+Equipped = {}
+
 NameToCharacter = {}
 
 Hook.Add("roundStart", "setup", function ()
@@ -87,26 +90,22 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
         if attackResult.Afflictions[1].GetVitalityDecrease(character) <= 1 then
             return
         end
-        local msg = string.format("%s was hit in the %s by %s", character.Character.Name, hitLimb.Name, attackResult.Afflictions[1].Source.Name)  
-        print(msg," vitality decrease: ", tostring(attackResult.Afflictions[1].GetVitalityDecrease(character)))
+        local heldItems = Helpers.GetHeldItems(attackResult.Afflictions[1].Source)
+        local msg = string.format("%s was hit in the %s by %s %s", character.Character.Name, 
+            hitLimb.Name, attackResult.Afflictions[1].Source.Name, 
+            next(heldItems) and "with a: ".. heldItems[1] or "")  
+        print(msg)
         table.insert(LogBuffer, msg)
-        if character.IsUnconscious then
-            msg = string.format("%s is %s", character.Character.Name, character.IsDead and "dead!" or "unconscious!")
-            print(msg)
-            table.insert(LogBuffer, msg)
-        end
     end
  end)
 
  Hook.Add("character.ApplyAffliction", "player gets affliction", function (character, limbHealth, newAffliction, allowStacking)
-    if character.Character.IsPlayer or character.Character.IsHuman then
         if character.GetAffliction(newAffliction.Prefab.Identifier) then
             return
         end
         local msg = string.format( "%s now has %s %s", character.Character.Name, newAffliction.Name, newAffliction.Source and "caused by: " .. newAffliction.Source.Name or "")
         print(msg)
         table.insert(LogBuffer, msg)   
-    end
  end)
 
  Hook.Add("inventoryPutItem", "player puts item in inventory", function(inventory, item, characterUser, index, swapWholeStackBool)
@@ -121,10 +120,45 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
     end
     if characterUser.IsPlayer or characterUser.IsHuman then
         if inventory.ToString() == "Barotrauma.CharacterInventory" then
-
-            msg = string.format("%s grabbed a %s", inventory.character.Name, item.Name)
-            print(msg)
-            table.insert(LogBuffer, msg)
+            local verb = "acquired"
+            if index == 5 or index == 6 then
+                verb = "equipped" 
+                if not Equipped[inventory.character] then
+                    Equipped[inventory.character] = {}
+                end
+                if index == 6 then
+                    Equipped[inventory.character][1] = item.Name
+                else
+                    Equipped[inventory.character][2] = item.Name
+                end
+                if item.Name == "Handcuffs" then
+                    local msg = string.format("%s was Handcuffed", inventory.character.Name)
+                    print(msg)
+                    table.insert(LogBuffer, msg)
+                    return
+                end
+            end
+            -- cool awesome spaghetti code to manually define unequipping
+            if Equipped[inventory.character] and (Equipped[inventory.character][1] == item.Name or Equipped[inventory.character][2] == item.Name) and index ~=5 and index ~=6 then
+                if Equipped[inventory.character][1] == item.Name then
+                    Equipped[inventory.character][1] = ""
+                else
+                    Equipped[inventory.character][2] = ""
+                end
+                verb = "put away"
+                if item.Name == "Handcuffs" then
+                    local msg = string.format("%s is no longer Handcuffed", inventory.character.Name)
+                    print(msg)
+                    table.insert(LogBuffer, msg)
+                    return
+                end
+            
+            end
+            local msg = string.format("%s %s a %s", inventory.character.Name,verb, item.Name)
+            if msg ~= LogBuffer[#LogBuffer] then
+                print(msg)
+                table.insert(LogBuffer, msg)
+            end
         end
         
     end
@@ -149,6 +183,27 @@ Hook.Add("think", "send Logs", function ()
         return
     end
     ElapsedTicks = ElapsedTicks + 1
+end)
+
+Hook.Add("think", "Player unconscious/wakes up/dead", function ()
+    for name,character in pairs(NameToCharacter) do
+        if character.IsDead and not ConfirmedDead[character] then
+            local msg = string.format( "%s is dead!",name)
+            print(msg)
+            table.insert(LogBuffer, msg)
+            ConfirmedDead[character] = true
+        elseif not WasUnconsious[character] and character.CharacterHealth.IsUnconscious then
+            local msg = string.format( "%s is unconscious!",name)
+            print(msg)
+            table.insert(LogBuffer, msg)
+            WasUnconsious[character] = true
+        elseif WasUnconsious[character] and not character.CharacterHealth.IsUnconscious then
+            local msg = string.format( "%s is no longer unconscious!",name)
+            print(msg)
+            table.insert(LogBuffer, msg)
+            WasUnconsious[character] = false
+        end 
+    end
 end)
 
 -- Hook.Patch("Barotrauma.Networking.GameServer", "Log", function(line, messageType)

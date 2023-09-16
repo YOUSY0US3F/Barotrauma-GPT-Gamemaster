@@ -17,6 +17,22 @@ function CharacterClients()
     return table
 end
 
+function GetHeldItems(character)
+    local heldItems = {}
+        for item in character.HeldItems do
+            table.insert(heldItems, item.Name)
+        end
+        return heldItems
+end
+
+function IsEquipped(character, itemName)
+    for item in character.HeldItems do
+        if item.Name == itemName then
+            return true
+        end
+    end
+    return false
+end
 
 
-return {Stringify = Stringify, CharacterClients = CharacterClients}
+return {Stringify = Stringify, CharacterClients = CharacterClients, GetHeldItems = GetHeldItems, IsEquipped = IsEquipped}
