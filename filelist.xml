@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="Gamemaster">
+  <None file="%ModDir%/Lua/Autorun/listener.lua" />
+</contentpackage>
