@@ -49,20 +49,13 @@ function Query(character)
     end
     info["HeldItems"] = buffer
     buffer = {}
-    for _,otherchar in pairs(Character.CharacterList) do
-        if otherchar.IsHuman and otherchar ~= character and otherchar.CurrentHull then
-            if otherchar.CurrentHull.RoomName == info["Hull"] then
-                table.insert( buffer, otherchar.Name )
-            end
-        end
-    end
-    info["NearBy"] = buffer
+    info["NearBy"] = Helpers.GetNeighbors(character)
     buffer = {}
     local out = {}
     --making this I'm starting to wonder why I did all that stuff above with info
     table.insert( out, string.format("%s is %s", character.Name, info["Alive"] and "Alive" or "Dead") )
     table.insert(out, string.format("%s is currently %s in water", character.Name, character.AnimController.InWater and "" or "not"))
-    table.insert(out, string.format("%s is currently in the %s %s", character.Name, info["Hull"], next(info["NearBy"]) and "with: " .. table.concat(info["NearBy"], ", ") or ""))
+    table.insert(out, string.format("%s is currently in the %s %s", character.Name, string.gsub(info["Hull"], "(%a+).", "", 1), next(info["NearBy"]) and "with: " .. table.concat(info["NearBy"], ", ") or ""))
     table.insert(out, string.format("%s is holding these item(s): %s", character.Name, next(info["HeldItems"]) and table.concat(info["HeldItems"], ",") or "nothing"))
     return out
 end

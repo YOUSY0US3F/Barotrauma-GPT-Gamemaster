@@ -6,6 +6,7 @@ LastInteracted = {}
 WasUnconsious = {}
 ConfirmedDead = {}
 Equipped = {}
+CurrentRoom = {}
 
 NameToCharacter = {}
 
@@ -13,6 +14,15 @@ Hook.Add("roundStart", "setup", function ()
     LuaUserData.MakeFieldAccessible(Descriptors["Barotrauma.CharacterInventory"], "character")
     for _,character in pairs(Character.CharacterList) do
         NameToCharacter[character.Name] = character
+        print(character.Name)
+        CurrentRoom[character] = character.CurrentHull.RoomName
+    end
+end)
+
+Hook.Add("character.created", "character spawns in", function (createdCharacter)
+    if createdCharacter.IsHuman and not NameToCharacter[createdCharacter.Name] then
+        NameToCharacter[createdCharacter.Name] = createdCharacter
+        print(createdCharacter.Name," was created")
     end
 end)
 
@@ -36,6 +46,9 @@ end)
         end
         -- local interactionType = " used a "
         -- local msg = characterPicker.Name .. interactionType .. item.Name
+        if not item then
+            return
+        end
         if item.hasTag("smallitem") then
             msg = characterPicker.Name .. " picked up a " .. tostring(item.Name)
             print(msg)
@@ -202,6 +215,28 @@ Hook.Add("think", "Player unconscious/wakes up/dead", function ()
             table.insert(LogBuffer, msg)
             WasUnconsious[character] = false
         end 
+    end
+end)
+
+Hook.Add("think", "Player enters new room", function ()
+    for name, character in pairs(NameToCharacter) do
+        local room
+        if not character.CurrentHull then
+            --out of pure laziness I decide to just make this the same format as the rooms
+            room = "roomname.Ocean"
+        else
+            room = character.CurrentHull.RoomName
+        end
+        if not CurrentRoom[character] or CurrentRoom[character] ~= room then
+            local neighbors = Helpers.GetNeighbors(character)
+            CurrentRoom[character] = room
+            local msg = string.format("%s has entered the %s %s", 
+                name, string.gsub(room,"(%a+).", "", 1), 
+                next(neighbors) and "; " .. Helpers.CharacterConcat(neighbors) .. string.format(" %s there.", #neighbors == 1 and "is" or "are") or "")
+            
+            table.insert(LogBuffer,msg)
+            print(msg)
+        end
     end
 end)
 
