@@ -64,10 +64,35 @@ function CharacterConcat(characters)
     return out
 end
 
+function Contains(list, object)
+    for item in list do
+        if object == item then
+            return true
+        end
+    end
+    return false
+end
+
+function IndexOf(list, object)
+    for i,v in ipairs(list) do
+        if v == object then
+            return i
+        end
+    end
+    return 1
+end
+
+function CleanLog(log)
+    return string.gsub(log, "‖%a+:.+:%d+:%d+‖",""):gsub("‖end‖","")
+end
+
 
 return {Stringify = Stringify, 
 CharacterClients = CharacterClients, 
 GetHeldItems = GetHeldItems, 
 IsEquipped = IsEquipped,
 GetNeighbors = GetNeighbors,
-CharacterConcat = CharacterConcat}
+CharacterConcat = CharacterConcat,
+Contains = Contains,
+IndexOf = IndexOf,
+CleanLog = CleanLog}

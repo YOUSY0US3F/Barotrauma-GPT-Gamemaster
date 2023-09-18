@@ -1,0 +1,1010 @@
+Type: {6}: [LuaCs]  - listener.lua (Took 0.01384ms)
+Type: {6}: [LuaCs] Loaded!
+Type: {6}: Server started
+Type: {0}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ has joined the server.
+Type: {6}: Saving client permissions
+Type: {6}: Saving client permissions
+Type: {6}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ is ready to start the game.
+Type: {6}: Client "‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖" started the round.
+Type: {6}: Starting a new round...
+Type: {6}: Game mode: Sandbox
+Type: {6}: Submarine: Azimuth
+Type: {6}: Level seed: 5PlRcKBD
+Type: {6}: [LuaCs] Katerina Santillan	 was created
+Type: {6}: [LuaCs] Tanika Beltran	 was created
+Type: {1}: Tanika Beltran equipped Plasma Cutter
+Type: {6}: [LuaCs] Trudie Stogner	 was created
+Type: {1}: Trudie Stogner equipped Welding Tool
+Type: {6}: [LuaCs] Ethel Welden	 was created
+Type: {6}: [LuaCs] Ethel Welden now has Affliction (Bite wounds) 
+Ethel Welden now has Affliction (Bite wounds) 
+Type: {6}: [LuaCs] Janessa Hernandez	 was created
+Type: {6}: [LuaCs] Mafalda Krall	 was created
+Type: {1}: Mafalda Krall equipped Crowbar
+Type: {6}: [LuaCs] Mafalda Krall now has Affliction (Burn) 
+Mafalda Krall now has Affliction (Burn) 
+Type: {6}: [LuaCs] Mafalda Krall now has Affliction (Bite wounds) 
+Mafalda Krall now has Affliction (Bite wounds) 
+Type: {6}: [LuaCs] BIG PAPA YOUS	 was created
+Type: {6}: [LuaCs] Gerard Stogner	 was created
+Type: {6}: [LuaCs] Natashia Hampton	 was created
+Type: {6}: [LuaCs] Bridgett Shah	 was created
+Type: {6}: [LuaCs] Marin Chapman	 was created
+Type: {6}: [LuaCs] Katerina Santillan is dead!
+Katerina Santillan is dead!
+Type: {6}: [LuaCs] Tanika Beltran is dead!
+Tanika Beltran is dead!
+Type: {6}: [LuaCs] Trudie Stogner is dead!
+Trudie Stogner is dead!
+Type: {6}: [LuaCs] Ethel Welden is dead!
+Ethel Welden is dead!
+Type: {6}: [LuaCs] Janessa Hernandez is dead!
+Janessa Hernandez is dead!
+Type: {6}: [LuaCs] Mafalda Krall is dead!
+Mafalda Krall is dead!
+Katerina Santillan has entered the Ocean 
+Type: {6}: [LuaCs] Katerina Santillan has entered the Ocean 
+Tanika Beltran has entered the Ocean 
+Type: {6}: [LuaCs] Tanika Beltran has entered the Ocean 
+Trudie Stogner has entered the Ocean 
+Type: {6}: [LuaCs] Trudie Stogner has entered the Ocean 
+Ethel Welden has entered the Ocean 
+Type: {6}: [LuaCs] Ethel Welden has entered the Ocean 
+Janessa Hernandez has entered the Ocean 
+Type: {6}: [LuaCs] Janessa Hernandez has entered the Ocean 
+Mafalda Krall has entered the Ocean 
+Type: {6}: [LuaCs] Mafalda Krall has entered the Ocean 
+BIG PAPA YOUS has entered the Ocean 
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the Ocean 
+Gerard Stogner has entered the Ocean 
+Type: {6}: [LuaCs] Gerard Stogner has entered the Ocean 
+Natashia Hampton has entered the Ocean 
+Type: {6}: [LuaCs] Natashia Hampton has entered the Ocean 
+Bridgett Shah has entered the Ocean 
+Type: {6}: [LuaCs] Bridgett Shah has entered the Ocean 
+Marin Chapman has entered the Ocean 
+Type: {6}: [LuaCs] Marin Chapman has entered the Ocean 
+Type: {6}: Round started.
+Type: {6}: [LuaCs] Katerina Santillan
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/Autorun/listener.lua:(22,8-63): attempt to index a nil value
+Type: {6}: [LuaCs] Katerina Santillan is unconscious!
+Katerina Santillan is unconscious!
+Type: {6}: [LuaCs] Tanika Beltran is unconscious!
+Tanika Beltran is unconscious!
+Type: {6}: [LuaCs] Trudie Stogner is unconscious!
+Trudie Stogner is unconscious!
+Type: {6}: [LuaCs] Ethel Welden is unconscious!
+Ethel Welden is unconscious!
+Type: {6}: [LuaCs] Janessa Hernandez is unconscious!
+Janessa Hernandez is unconscious!
+Type: {6}: [LuaCs] Mafalda Krall is unconscious!
+Mafalda Krall is unconscious!
+Type: {1}: Fractalguardian equipped Guardian Hook Cannon
+BIG PAPA YOUS has entered the SubCenterRight 
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the SubCenterRight 
+Gerard Stogner has entered the dockingport 
+Type: {6}: [LuaCs] Gerard Stogner has entered the dockingport 
+Natashia Hampton has entered the gunnerycompartment 
+Type: {6}: [LuaCs] Natashia Hampton has entered the gunnerycompartment 
+Bridgett Shah has entered the ReactorRoom 
+Type: {6}: [LuaCs] Bridgett Shah has entered the ReactorRoom 
+Marin Chapman has entered the junctioncompartment 
+Type: {6}: [LuaCs] Marin Chapman has entered the junctioncompartment 
+Gerard Stogner has entered the CommandRoom 
+Type: {6}: [LuaCs] Gerard Stogner has entered the CommandRoom 
+Type: {0}: Natashia Hampton: What do you think is at the center?
+==============================================================
+Natashia Hampton has entered the SubCenterRight ; BIG PAPA YOUS is there.
+Type: {6}: [LuaCs] Natashia Hampton has entered the SubCenterRight ; BIG PAPA YOUS is there.
+Type: {1}: BIG PAPA YOUS set the value "Channel" of the item "Headset" to "0".
+Marin Chapman has entered the ReactorRoom ; Bridgett Shah is there.
+Type: {6}: [LuaCs] Marin Chapman has entered the ReactorRoom ; Bridgett Shah is there.
+Natashia Hampton has entered the junctioncompartment 
+Type: {6}: [LuaCs] Natashia Hampton has entered the junctioncompartment 
+Bridgett Shah has entered the junctioncompartment ; Natashia Hampton is there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the junctioncompartment ; Natashia Hampton is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS acquired a Detonator
+BIG PAPA YOUS acquired a Detonator
+Type: {2}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ picked up Detonator
+==============================================================
+Type: {2}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ placed IC-4 Block in Detonator (ID: 6990)
+BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS equipped a Detonator
+BIG PAPA YOUS equipped a Detonator
+Type: {1}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ equipped Detonator
+BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+==============================================================
+Type: {6}: [LuaCs] BIG PAPA YOUS is using a Detonator
+BIG PAPA YOUS is using a Detonator
+BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS is repairing a Nuclear Reactor
+BIG PAPA YOUS is repairing a Nuclear Reactor
+Type: {1}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ attached Detonator to a wall
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS acquired a Brown Wire
+BIG PAPA YOUS acquired a Brown Wire
+Type: {2}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ picked up Brown Wire
+BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS acquired a Screwdriver
+BIG PAPA YOUS acquired a Screwdriver
+Type: {2}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ picked up Screwdriver
+BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] BIG PAPA YOUS equipped a Screwdriver
+BIG PAPA YOUS equipped a Screwdriver
+Type: {1}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ equipped Screwdriver
+==============================================================
+Type: {6}: [LuaCs] BIG PAPA YOUS placed a Detonator
+Type: {6}: [LuaCs] BIG PAPA YOUS placed a Detonator
+Type: {6}: [LuaCs] BIG PAPA YOUS equipped a Brown Wire
+BIG PAPA YOUS equipped a Brown Wire
+Type: {1}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ equipped Brown Wire
+Type: {5}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ connected a wire to Detonator (activate)
+Type: {6}: [LuaCs] BIG PAPA YOUS is using a Brown Wire
+BIG PAPA YOUS is using a Brown Wire
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS has entered the junctioncompartment ; Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] BIG PAPA YOUS is using a Windowed Door with Buttons
+BIG PAPA YOUS is using a Windowed Door with Buttons
+Type: {5}: ‖metadata:STEAM_1:0:78921649‖BIG PAPA YOUS‖end‖ connected a wire from Windowed Door with Buttons (state_out) to Detonator (activate)
+Type: {6}: [LuaCs] Marin Chapman now has Affliction (Lacerations) 
+Marin Chapman now has Affliction (Lacerations) 
+Type: {6}: [LuaCs] Natashia Hampton now has Affliction (Deep tissue injury) 
+Natashia Hampton now has Affliction (Deep tissue injury) 
+Type: {6}: [LuaCs] Natashia Hampton now has Affliction (Burn) 
+Natashia Hampton now has Affliction (Burn) 
+Type: {6}: [LuaCs] Bridgett Shah now has Affliction (Deep tissue injury) 
+Bridgett Shah now has Affliction (Deep tissue injury) 
+Type: {6}: [LuaCs] Bridgett Shah now has Affliction (Burn) 
+Bridgett Shah now has Affliction (Burn) 
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {6}: [LuaCs] Marin Chapman now has Affliction (Deep tissue injury) 
+Marin Chapman now has Affliction (Deep tissue injury) 
+Type: {6}: [LuaCs] Marin Chapman now has Affliction (Burn) 
+Marin Chapman now has Affliction (Burn) 
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {6}: [LuaCs] Marin Chapman is unconscious!
+Marin Chapman is unconscious!
+Type: {6}: [LuaCs] Marin Chapman now has Affliction (Blunt force trauma) 
+Marin Chapman now has Affliction (Blunt force trauma) 
+==============================================================
+Type: {6}: [LuaCs] Gerard Stogner equipped a Welding Tool
+Gerard Stogner equipped a Welding Tool
+Type: {1}: Gerard Stogner equipped Welding Tool
+Type: {6}: [LuaCs] Gerard Stogner equipped a Welding Tool
+Gerard Stogner equipped a Welding Tool
+Gerard Stogner has entered the SubCenterRight 
+Type: {6}: [LuaCs] Gerard Stogner has entered the SubCenterRight 
+Gerard Stogner has entered the junctioncompartment ; BIG PAPA YOUS, Natashia Hampton and Bridgett Shah are there.
+Type: {6}: [LuaCs] Gerard Stogner has entered the junctioncompartment ; BIG PAPA YOUS, Natashia Hampton and Bridgett Shah are there.
+==============================================================
+Type: {6}: [LuaCs] Gerard Stogner is repairing a wall
+Gerard Stogner is repairing a wall
+Type: {6}: [LuaCs] Gerard Stogner is using a Welding Tool
+Gerard Stogner is using a Welding Tool
+Type: {6}: [LuaCs] Gerard Stogner is using a welding tool on Natashia Hampton's LeftLeg (7)
+Gerard Stogner is using a welding tool on Natashia Hampton's LeftLeg (7)
+Type: {6}: [LuaCs] Natashia Hampton now has Affliction (Burn) caused by: Gerard Stogner
+Natashia Hampton now has Affliction (Burn) caused by: Gerard Stogner
+Type: {1}: Inner wall repaired by Gerard Stogner
+Type: {0}: Gerard Stogner: No more leaks in Junction compartment!
+Type: {6}: [LuaCs] Gerard Stogner is welding a door shut
+Gerard Stogner is welding a door shut
+Type: {6}: [LuaCs] Gerard Stogner put away their Welding Tool
+Gerard Stogner put away their Welding Tool
+Type: {1}: Gerard Stogner unequipped Welding Tool
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {12}: [LuaCs] [SV LUA ERROR] LocalMods/Gamemaster/Lua/helpers.lua:(22,8-42): attempt to index a nil value
+Type: {3}: Marin Chapman has died (Cause of death: Burn)
+Type: {6}: [LuaCs] Marin Chapman is dead!
+Marin Chapman is dead!
+==============================================================
+Gerard Stogner has entered the SubCenterRight 
+Type: {6}: [LuaCs] Gerard Stogner has entered the SubCenterRight 
+Type: {6}: [LuaCs] Bridgett Shah now has Affliction (Burn) 
+Bridgett Shah now has Affliction (Burn) 
+Bridgett Shah has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the ReactorRoom ; Marin Chapman is there.
+Type: {6}: [LuaCs] Natashia Hampton equipped a Welding Tool
+Natashia Hampton equipped a Welding Tool
+Type: {1}: Natashia Hampton equipped Welding Tool
+Type: {6}: [LuaCs] Natashia Hampton equipped a Welding Tool
+Natashia Hampton equipped a Welding Tool
+==============================================================
+Bridgett Shah has entered the junctioncompartment ; BIG PAPA YOUS and Natashia Hampton are there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the junctioncompartment ; BIG PAPA YOUS and Natashia Hampton are there.
+Type: {6}: [LuaCs] Natashia Hampton put away their Welding Tool
+Natashia Hampton put away their Welding Tool
+Type: {1}: Natashia Hampton unequipped Welding Tool
+Type: {6}: [LuaCs] Gerard Stogner equipped a Fire Extinguisher
+Gerard Stogner equipped a Fire Extinguisher
+Type: {1}: Gerard Stogner equipped Fire Extinguisher
+Type: {6}: [LuaCs] Gerard Stogner equipped a Fire Extinguisher
+Gerard Stogner equipped a Fire Extinguisher
+Natashia Hampton has entered the SubCenterRight ; Gerard Stogner is there.
+Type: {6}: [LuaCs] Natashia Hampton has entered the SubCenterRight ; Gerard Stogner is there.
+Gerard Stogner has entered the junctioncompartment ; BIG PAPA YOUS and Bridgett Shah are there.
+Type: {6}: [LuaCs] Gerard Stogner has entered the junctioncompartment ; BIG PAPA YOUS and Bridgett Shah are there.
+Type: {0}: Gerard Stogner: Trying to find an extinguisher!
+Bridgett Shah has entered the SubCenterRight ; Natashia Hampton is there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the SubCenterRight ; Natashia Hampton is there.
+Type: {6}: [LuaCs] Gerard Stogner now has Affliction (Burn) 
+Gerard Stogner now has Affliction (Burn) 
+==============================================================
+Type: {0}: Natashia Hampton: I need a fire extinguisher!
+Gerard Stogner has entered the cargo 
+Type: {6}: [LuaCs] Gerard Stogner has entered the cargo 
+Natashia Hampton has entered the CommandRoom 
+Type: {6}: [LuaCs] Natashia Hampton has entered the CommandRoom 
+Bridgett Shah has entered the CommandRoom ; Natashia Hampton is there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the CommandRoom ; Natashia Hampton is there.
+Type: {0}: Bridgett Shah: Trying to find an extinguisher!
+Type: {6}: [LuaCs] Natashia Hampton equipped a Fire Extinguisher
+Natashia Hampton equipped a Fire Extinguisher
+Type: {1}: Natashia Hampton equipped Fire Extinguisher
+Type: {6}: [LuaCs] Natashia Hampton equipped a Fire Extinguisher
+Natashia Hampton equipped a Fire Extinguisher
+Type: {6}: [LuaCs] Bridgett Shah equipped a Bandage
+Bridgett Shah equipped a Bandage
+Type: {1}: Bridgett Shah equipped Bandage
+Natashia Hampton has entered the SubCenterRight 
+Type: {6}: [LuaCs] Natashia Hampton has entered the SubCenterRight 
+Type: {6}: [LuaCs] Bridgett Shah used Bandage on Bridgett Shah's LeftThigh (6)
+Bridgett Shah used Bandage on Bridgett Shah's LeftThigh (6)
+Bridgett Shah has entered the SubCenterRight ; Natashia Hampton is there.
+Type: {6}: [LuaCs] Bridgett Shah has entered the SubCenterRight ; Natashia Hampton is there.
+Gerard Stogner has entered the engineroom 
+Type: {6}: [LuaCs] Gerard Stogner has entered the engineroom 
+Natashia Hampton has entered the junctioncompartment ; BIG PAPA YOUS is there.
+Type: {6}: [LuaCs] Natashia Hampton has entered the junctioncompartment ; BIG PAPA YOUS is there.
+Type: {6}: [LuaCs] Bridgett Shah equipped a Opium
+Bridgett Shah equipped a Opium
+Type: {1}: Bridgett Shah equipped Opium
+==============================================================
+BIG PAPA YOUS has entered the Ocean 
+Freeman Beltran has entered the Ocean 
+Leila Weaver has entered the Ocean 
+Sammie Ouellette has entered the Ocean 
+Carson Poole has entered the Ocean 
+BIG PAPA YOUS has entered the SubCenterRight 
+Freeman Beltran has entered the ReactorRoom ; Carson Poole is there.
+Leila Weaver has entered the gunnerycompartment 
+Sammie Ouellette has entered the junctioncompartment 
+Carson Poole has entered the ReactorRoom ; Freeman Beltran is there.
+==============================================================
+Leila Weaver has entered the SubCenterRight ; BIG PAPA YOUS is there.
+Sammie Ouellette has entered the ReactorRoom ; Freeman Beltran and Carson Poole are there.
+Leila Weaver has entered the junctioncompartment 
+Carson Poole has entered the junctioncompartment ; Leila Weaver is there.
+Freeman Beltran has entered the junctioncompartment ; Leila Weaver and Carson Poole are there.
+Carson Poole has entered the cargo 
+BIG PAPA YOUS acquired a Detonator
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Freeman Beltran and Leila Weaver are there.
+BIG PAPA YOUS acquired a Screwdriver
+BIG PAPA YOUS acquired a Red Wire
+BIG PAPA YOUS has entered the ReactorRoom ; Sammie Ouellette is there.
+BIG PAPA YOUS equipped a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+==============================================================
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS equipped a Red Wire
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS equipped a Screwdriver
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+==============================================================
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS is using a Red Wire
+BIG PAPA YOUS has entered the junctioncompartment ; Freeman Beltran and Leila Weaver are there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the cargo ; Carson Poole is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS is repairing a Fabricator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS is working on a Fabricator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Lacerations) 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette now has Affliction (Lacerations) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Deep tissue injury) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Burn) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Bleeding) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Deep tissue injury) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Bleeding) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Burn) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Deep tissue injury) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Bleeding) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Burn) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette now has Affliction (Deep tissue injury) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette now has Affliction (Burn) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Carson Poole now has Affliction (Deep tissue injury) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Carson Poole now has Affliction (Burn) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Radiation sickness) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Radiation sickness) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Radiation sickness) 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette now has Affliction (Radiation sickness) 
+BIG PAPA YOUS placed a Detonator
+Carson Poole now has Affliction (Radiation sickness) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS is dead!
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette is dead!
+BIG PAPA YOUS placed a Detonator
+Carson Poole is dead!
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS now has Affliction (Blunt force trauma) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS is unconscious!
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette is unconscious!
+BIG PAPA YOUS placed a Detonator
+Carson Poole is unconscious!
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Carson Poole now has Affliction (Blunt force trauma) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette now has Affliction (Blunt force trauma) 
+Carson Poole has entered the junctioncompartment ; Freeman Beltran and Leila Weaver are there.
+BIG PAPA YOUS placed a Detonator
+==============================================================
+Leila Weaver has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS and Leila Weaver are there.
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; Leila Weaver is there.
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS has entered the cargo ; Leila Weaver and Sammie Ouellette are there.
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS and Leila Weaver are there.
+BIG PAPA YOUS placed a Detonator
+Leila Weaver has entered the junctioncompartment ; Freeman Beltran and Carson Poole are there.
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the cargo 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS has entered the cargo 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran acquired a Baseball Cap
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran wore a Diving Mask
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Freeman Beltran has entered the SubCenterRight 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+==============================================================
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Leila Weaver has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the Ocean 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver wore a Diving Mask
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Freeman Beltran has entered the gunnerycompartment 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+==============================================================
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Leila Weaver has entered the subtopleft 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Leila Weaver has entered the ReactorRoom 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the cargo ; BIG PAPA YOUS is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Sammie Ouellette has entered the Ocean 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+Freeman Beltran has entered the SubCenterRight 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+==============================================================
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran now has Affliction (Blunt force trauma) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Blunt force trauma) 
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver now has Affliction (Nausea) 
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran equipped a Stabilozine
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Leila Weaver has entered the junctioncompartment ; Carson Poole is there.
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+Freeman Beltran equipped a Stabilozine
+BIG PAPA YOUS placed a Detonator
+BIG PAPA YOUS placed a Detonator
+==============================================================
+Julius Marquez now has Affliction (Bite wounds) 
+Sara Clements now has Affliction (Burn) 
+Julius Marquez is dead!
+Bertha Klein is dead!
+Dewitt Holter is dead!
+Sara Clements is dead!
+Jess Thompkins is dead!
+Julius Marquez has entered the Ocean 
+Bertha Klein has entered the Ocean 
+Dewitt Holter has entered the Ocean 
+Sara Clements has entered the Ocean 
+Jess Thompkins has entered the Ocean 
+BIG PAPA YOUS has entered the Ocean 
+Alla Mosley has entered the Ocean 
+Alta Schmitt has entered the Ocean 
+Larissa Schmitt has entered the Ocean 
+Pete Angles has entered the Ocean 
+Julius Marquez is unconscious!
+Bertha Klein is unconscious!
+Dewitt Holter is unconscious!
+Sara Clements is unconscious!
+Jess Thompkins is unconscious!
+BIG PAPA YOUS has entered the SubCenterRight 
+Alla Mosley has entered the ReactorRoom 
+Alta Schmitt has entered the cargo 
+Larissa Schmitt has entered the gunnerycompartment 
+Pete Angles has entered the CommandRoom 
+==============================================================
+Alta Schmitt has entered the engineroom 
+Alla Mosley has entered the junctioncompartment 
+BIG PAPA YOUS equipped a Grenade Launcher
+BIG PAPA YOUS placed Grenade Launcher in Secure Steel Cabinet (ID: 265)
+BIG PAPA YOUS acquired a Syringe Gun
+BIG PAPA YOUS acquired a Pomegrenade Extract
+BIG PAPA YOUS placed Pomegrenade Extract in Syringe Gun (ID: 3907)
+BIG PAPA YOUS placed Pomegrenade Extract in Syringe Gun (ID: 3907)
+BIG PAPA YOUS placed Pomegrenade Extract in Syringe Gun (ID: 3907)
+BIG PAPA YOUS placed Pomegrenade Extract in Syringe Gun (ID: 3907)
+BIG PAPA YOUS equipped a Syringe Gun
+BIG PAPA YOUS has entered the junctioncompartment ; Alla Mosley is there.
+==============================================================
+BIG PAPA YOUS is using a Syringe Gun
+Alta Schmitt has entered the cargo 
+Alla Mosley has entered the SubCenterRight 
+Pete Angles has entered the SubCenterRight ; Alla Mosley is there.
+BIG PAPA YOUS has entered the SubCenterRight ; Alla Mosley and Pete Angles are there.
+BIG PAPA YOUS put away their Syringe Gun
+BIG PAPA YOUS wore a Body Armor
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the ReactorRoom 
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the SubCenterRight ; Alla Mosley and Pete Angles are there.
+Alla Mosley has entered the junctioncompartment 
+BIG PAPA YOUS has entered the junctioncompartment ; Alla Mosley is there.
+Alla Mosley has entered the ReactorRoom 
+==============================================================
+BIG PAPA YOUS acquired a Screwdriver
+BIG PAPA YOUS equipped a Screwdriver
+BIG PAPA YOUS is using a Junction Box
+BIG PAPA YOUS now has Affliction (Burn) 
+BIG PAPA YOUS has entered the ReactorRoom ; Alla Mosley is there.
+BIG PAPA YOUS is repairing a Nuclear Reactor
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the SubCenterRight ; Pete Angles is there.
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the SubCenterRight ; Pete Angles is there.
+BIG PAPA YOUS acquired a Harpoon Gun
+BIG PAPA YOUS equipped a Harpoon Gun
+BIG PAPA YOUS acquired a Screwdriver
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the cargo ; Alta Schmitt is there.
+BIG PAPA YOUS is using a Harpoon Gun
+Alta Schmitt was hit in the Torso (0) by BIG PAPA YOUS with a: Harpoon Gun
+Alta Schmitt now has Affliction (Lacerations) caused by: BIG PAPA YOUS
+Alta Schmitt now has Affliction (Bleeding) caused by: BIG PAPA YOUS
+Alta Schmitt now has Affliction (Drag) caused by: BIG PAPA YOUS
+==============================================================
+Alta Schmitt has entered the engineroom 
+Alla Mosley has entered the junctioncompartment 
+Pete Angles has entered the gunnerycompartment ; Larissa Schmitt is there.
+Larissa Schmitt picked up a Stun Baton
+Larissa Schmitt equipped a Stun Baton
+Larissa Schmitt has entered the SubCenterRight 
+Alla Mosley has entered the ReactorRoom 
+Larissa Schmitt has entered the junctioncompartment 
+Larissa Schmitt has entered the cargo ; BIG PAPA YOUS is there.
+Larissa Schmitt is using a Stun Baton
+BIG PAPA YOUS was hit in the LeftThigh (6) by Larissa Schmitt with a: Stun Baton
+BIG PAPA YOUS now has Affliction (Blunt force trauma) caused by: Larissa Schmitt
+BIG PAPA YOUS now has Affliction (IncrementalStun) caused by: Larissa Schmitt
+Alta Schmitt acquired a Harpoon
+==============================================================
+Larissa Schmitt was hit in the Torso (0) by BIG PAPA YOUS with a: Harpoon Gun
+Larissa Schmitt now has Affliction (Lacerations) caused by: BIG PAPA YOUS
+Larissa Schmitt now has Affliction (Bleeding) caused by: BIG PAPA YOUS
+Larissa Schmitt now has Affliction (Drag) caused by: BIG PAPA YOUS
+Larissa Schmitt was hit in the LeftArm (4) by BIG PAPA YOUS with a: Harpoon Gun
+Larissa Schmitt now has Affliction (Drag) caused by: BIG PAPA YOUS
+BIG PAPA YOUS was hit in the Head (1) by Larissa Schmitt with a: Stun Baton
+Alta Schmitt has entered the ReactorRoom ; Alla Mosley is there.
+Alta Schmitt equipped a Morphine
+Alta Schmitt used Morphine on Alta Schmitt's Torso (0)
+Alta Schmitt now has Affliction (Opiate addiction) caused by: Alta Schmitt
+Alta Schmitt now has Affliction (Opiate overdose) caused by: Alta Schmitt
+==============================================================
+BIG PAPA YOUS was hit in the LeftHand (5) by Larissa Schmitt with a: Stun Baton
+Alta Schmitt has entered the subtopleft 
+Alla Mosley has entered the subtopleft ; Alta Schmitt is there.
+Pete Angles has entered the SubCenterRight 
+Larissa Schmitt was hit in the Torso (0) by BIG PAPA YOUS with a: Harpoon Gun
+Larissa Schmitt now has Affliction (Drag) caused by: BIG PAPA YOUS
+BIG PAPA YOUS was hit in the LeftArm (4) by Larissa Schmitt with a: Stun Baton
+BIG PAPA YOUS now has Affliction (Nausea) caused by: Larissa Schmitt
+Larissa Schmitt picked up a Diving Knife
+Larissa Schmitt put away their Stun Baton
+Larissa Schmitt equipped a Diving Knife
+Larissa Schmitt is using a Diving Knife
+Pete Angles has entered the CommandRoom 
+==============================================================
+BIG PAPA YOUS was hit in the Head (1) by Larissa Schmitt with a: Diving Knife
+BIG PAPA YOUS now has Affliction (Lacerations) caused by: Larissa Schmitt
+BIG PAPA YOUS now has Affliction (Bleeding) caused by: Larissa Schmitt
+BIG PAPA YOUS now has Affliction (Concussion) 
+Alla Mosley has entered the ReactorRoom 
+BIG PAPA YOUS was hit in the Head (1) by Larissa Schmitt with a: Diving Knife
+Pete Angles has entered the commandroom 
+Alla Mosley has entered the engineroom 
+BIG PAPA YOUS was hit in the Head (1) by Larissa Schmitt with a: Diving Knife
+BIG PAPA YOUS was hit in the Head (1) by Larissa Schmitt with a: Diving Knife
+Larissa Schmitt put away their Diving Knife
+Larissa Schmitt acquired a Harpoon
+==============================================================
+Larissa Schmitt has entered the junctioncompartment 
+Pete Angles has entered the CommandRoom 
+Alta Schmitt has entered the ReactorRoom 
+Larissa Schmitt has entered the ReactorRoom ; Alta Schmitt is there.
+Alta Schmitt equipped a Bandage
+Larissa Schmitt has entered the junctioncompartment 
+Alta Schmitt used Bandage on Alta Schmitt's Torso (0)
+==============================================================
+Larissa Schmitt equipped a Bandage
+Pete Angles has entered the SubCenterRight 
+Alla Mosley acquired a Harpoon
+Larissa Schmitt used Bandage on Larissa Schmitt's LeftArm (4)
+BIG PAPA YOUS has entered the junctioncompartment ; Larissa Schmitt is there.
+Pete Angles has entered the junctioncompartment ; BIG PAPA YOUS and Larissa Schmitt are there.
+Larissa Schmitt equipped a Bandage
+BIG PAPA YOUS now has Affliction (Organ damage) caused by: Larissa Schmitt
+Alta Schmitt has entered the junctioncompartment ; BIG PAPA YOUS, Larissa Schmitt and Pete Angles are there.
+Pete Angles acquired a Harpoon
+Larissa Schmitt used Bandage on Larissa Schmitt's Torso (0)
+Alla Mosley has entered the ReactorRoom 
+Alta Schmitt has entered the SubCenterRight 
+==============================================================
+Pete Angles has entered the SubCenterRight ; Alta Schmitt is there.
+BIG PAPA YOUS equipped a Diving Knife
+BIG PAPA YOUS put away their Harpoon Gun
+BIG PAPA YOUS has entered the ReactorRoom ; Alla Mosley is there.
+Larissa Schmitt has entered the SubCenterRight ; Alta Schmitt and Pete Angles are there.
+Larissa Schmitt equipped a Blood Pack
+Alta Schmitt has entered the junctioncompartment 
+Larissa Schmitt equipped a Opium
+Larissa Schmitt used Opium on Larissa Schmitt's Torso (0)
+Larissa Schmitt now has Affliction (Opiate addiction) caused by: Larissa Schmitt
+Larissa Schmitt now has Affliction (Opiate overdose) caused by: Larissa Schmitt
+==============================================================
+Alla Mosley has entered the junctioncompartment ; Alta Schmitt is there.
+Larissa Schmitt equipped a Bandage
+Larissa Schmitt used Bandage on Larissa Schmitt's Torso (0)
+Alta Schmitt has entered the ReactorRoom ; BIG PAPA YOUS is there.
+BIG PAPA YOUS has entered the junctioncompartment ; Alla Mosley is there.
+Larissa Schmitt equipped a Opium
+BIG PAPA YOUS has entered the SubCenterRight ; Larissa Schmitt and Pete Angles are there.
+Larissa Schmitt used Opium on Larissa Schmitt's Torso (0)
+Alla Mosley has entered the SubCenterRight ; BIG PAPA YOUS, Larissa Schmitt and Pete Angles are there.
+==============================================================
+Larissa Schmitt has entered the CommandRoom 
+Alla Mosley has entered the junctioncompartment 
+BIG PAPA YOUS acquired a Morphine
+BIG PAPA YOUS used item Morphine
+BIG PAPA YOUS used Morphine on BIG PAPA YOUS's Torso (0)
+BIG PAPA YOUS now has Affliction (Opiate addiction) caused by: BIG PAPA YOUS
+BIG PAPA YOUS now has Affliction (Opiate overdose) caused by: BIG PAPA YOUS
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Alla Mosley is there.
+BIG PAPA YOUS has entered the ReactorRoom ; Alta Schmitt is there.
+BIG PAPA YOUS equipped a Harpoon Gun
+BIG PAPA YOUS acquired a Diving Knife
+BIG PAPA YOUS has entered the junctioncompartment ; Alla Mosley is there.
+BIG PAPA YOUS has entered the cargo 
+BIG PAPA YOUS acquired a Harpoon
+BIG PAPA YOUS placed Harpoon in Harpoon Gun (ID: 3708)
+==============================================================
+BIG PAPA YOUS has entered the Ocean 
+Tawanda Radice has entered the Ocean 
+Arthur Aker has entered the Ocean 
+Maybell Breeki has entered the Ocean 
+Susy Sacks has entered the Ocean 
+BIG PAPA YOUS has entered the SubCenterRight 
+Tawanda Radice has entered the dockingport 
+Arthur Aker has entered the junctioncompartment 
+Maybell Breeki has entered the ReactorRoom 
+Susy Sacks has entered the gunnerycompartment 
+Saul Lucas has entered the Ocean 
+Saul Lucas has entered the SubTopLeft 
+Saul Lucas acquired a Crowbar
+Tawanda Radice has entered the CommandRoom 
+==============================================================
+Susy Sacks has entered the SubCenterRight ; BIG PAPA YOUS is there.
+Arthur Aker has entered the cargo 
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the SubCenterRight ; Susy Sacks is there.
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the ReactorRoom ; Maybell Breeki is there.
+BIG PAPA YOUS has entered the junctioncompartment 
+BIG PAPA YOUS has entered the SubCenterRight ; Susy Sacks is there.
+==============================================================
+Susy Sacks acquired a Stun Baton
+BIG PAPA YOUS placed Stun Baton in Human
+Susy Sacks acquired a Handcuffs
+BIG PAPA YOUS placed Handcuffs in Human
+Saul Lucas has entered the ReactorRoom ; Maybell Breeki is there.
+Tawanda Radice has entered the SubCenterRight ; BIG PAPA YOUS and Susy Sacks are there.
+Tawanda Radice has entered the junctioncompartment 
+==============================================================
+BIG PAPA YOUS has entered the Ocean 
+Ronnie Clements has entered the Ocean 
+Messiah Bonham has entered the Ocean 
+Natalia Weaver has entered the Ocean 
+Dominick Lawson has entered the Ocean 
+BIG PAPA YOUS has entered the SubCenterRight 
+Ronnie Clements has entered the ReactorRoom ; Natalia Weaver is there.
+Messiah Bonham has entered the junctioncompartment 
+Natalia Weaver has entered the ReactorRoom ; Ronnie Clements is there.
+Dominick Lawson has entered the cargo 
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment ; Messiah Bonham is there.
+Ronnie Clements has entered the junctioncompartment ; BIG PAPA YOUS and Messiah Bonham are there.
+Ronnie Clements has entered the cargo ; Dominick Lawson is there.
+BIG PAPA YOUS acquired a Morphine
+BIG PAPA YOUS took Messiah Bonham's Morphine
+Messiah Bonham acquired a Morphine
+BIG PAPA YOUS took BIG PAPA YOUS's Morphine
+BIG PAPA YOUS placed Morphine in Human
+==============================================================
+BIG PAPA YOUS has entered the ReactorRoom ; Natalia Weaver is there.
+BIG PAPA YOUS has entered the junctioncompartment ; Messiah Bonham is there.
+BIG PAPA YOUS has entered the SubCenterRight 
+Dominick Lawson has entered the engineroom 
+Natalia Weaver has entered the junctioncompartment ; Messiah Bonham is there.
+Messiah Bonham has entered the ReactorRoom 
+Natalia Weaver has entered the cargo ; Ronnie Clements is there.
+==============================================================
+Maurice Ellison now has Affliction (Bite wounds) 
+Antony Stalvey now has Affliction (Bite wounds) 
+Stevie Chaney is dead!
+Mila Cortese is dead!
+Maurice Ellison is dead!
+Antony Stalvey is dead!
+Stevie Chaney has entered the Ocean 
+Mila Cortese has entered the Ocean 
+Maurice Ellison has entered the Ocean 
+Antony Stalvey has entered the Ocean 
+BIG PAPA YOUS has entered the Ocean 
+Page Eastman has entered the Ocean 
+Hortensia Larsen has entered the Ocean 
+Ina Gould has entered the Ocean 
+Joe McLeroy has entered the Ocean 
+Stevie Chaney is unconscious!
+Mila Cortese is unconscious!
+Maurice Ellison is unconscious!
+Antony Stalvey is unconscious!
+BIG PAPA YOUS has entered the gunnerycompartment 
+Page Eastman has entered the dockingport 
+Hortensia Larsen has entered the junctioncompartment 
+Ina Gould has entered the CommandRoom 
+Joe McLeroy has entered the cargo 
+Page Eastman has entered the CommandRoom ; Ina Gould is there.
+==============================================================
+Joe McLeroy has entered the engineroom 
+BIG PAPA YOUS has entered the SubCenterRight 
+BIG PAPA YOUS has entered the junctioncompartment ; Hortensia Larsen is there.
+Joe McLeroy has entered the ReactorRoom 
+Joe McLeroy has entered the subtopleft 
+BIG PAPA YOUS acquired a Syringe Gun
+BIG PAPA YOUS took Hortensia Larsen's Syringe Gun
+==============================================================
+BIG PAPA YOUS has entered the ReactorRoom 
+BIG PAPA YOUS has entered the junctioncompartment ; Hortensia Larsen is there.
+BIG PAPA YOUS has entered the SubCenterRight 
+BIG PAPA YOUS acquired a Ballistic Helmet
+BIG PAPA YOUS wore a Ballistic Helmet
+BIG PAPA YOUS wore a Body Armor
+Joe McLeroy has entered the ReactorRoom 
+==============================================================
+BIG PAPA YOUS acquired a Machine Pistol
+Hortensia Larsen has entered the SubCenterRight ; BIG PAPA YOUS is there.
+Hortensia Larsen has entered the gunnerycompartment 
+BIG PAPA YOUS has entered the gunnerycompartment ; Hortensia Larsen is there.
+Hortensia Larsen acquired a Syringe Gun
+BIG PAPA YOUS placed Syringe Gun in Human
+BIG PAPA YOUS has entered the SubCenterRight 
+==============================================================
+BIG PAPA YOUS has entered the junctioncompartment 
+Page Eastman has entered the SubCenterRight 
+BIG PAPA YOUS has entered the SubCenterRight ; Page Eastman is there.
+Page Eastman wore a Body Armor
+BIG PAPA YOUS placed Body Armor in Human
+Ina Gould has entered the SubCenterRight ; BIG PAPA YOUS and Page Eastman are there.
+BIG PAPA YOUS wore a Body Armor
+BIG PAPA YOUS stripped off Page Eastman's Body Armor
+==============================================================
+Page Eastman acquired a Assistant Clothes
+BIG PAPA YOUS took Page Eastman's Assistant Clothes
+BIG PAPA YOUS acquired a Assistant Clothes
+BIG PAPA YOUS took Page Eastman's Assistant Clothes
+Hortensia Larsen has entered the SubCenterRight ; BIG PAPA YOUS, Page Eastman and Ina Gould are there.
+Hortensia Larsen has entered the junctioncompartment 
+Ina Gould has entered the junctioncompartment ; Hortensia Larsen is there.
+==============================================================
