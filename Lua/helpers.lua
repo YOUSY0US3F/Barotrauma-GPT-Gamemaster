@@ -40,7 +40,7 @@ function GetNeighbors(character)
     end
     local buffer = {}
     for _,otherchar in pairs(Character.CharacterList) do
-        if otherchar.IsHuman and otherchar ~= character and otherchar.CurrentHull then
+        if otherchar ~= character and otherchar.CurrentHull then
             if otherchar.CurrentHull.RoomName == character.CurrentHull.RoomName then
                 table.insert( buffer, otherchar.Name )
             end
