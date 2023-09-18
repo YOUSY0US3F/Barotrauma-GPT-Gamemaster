@@ -12,7 +12,7 @@
 - press F3 and feast your eyes upon the errors :)
 
 # Refrences
-- [Lua for barotrauma docs](https://evilfactory.github.io/LuaCsForBarotrauma/lua-docs/manual/getting-started/)https://evilfactory.github.io/LuaCsForBarotrauma/lua-docs/manual/getting-started)
+- [Lua for barotrauma docs](https://evilfactory.github.io/LuaCsForBarotrauma/lua-docs/manual/getting-started/)
 - [Barotrauma Repo](https://github.com/evilfactory/LuaCsForBarotrauma/tree/6b149e0498b9b634847c867ec6a211532f609c7b)
 
 
