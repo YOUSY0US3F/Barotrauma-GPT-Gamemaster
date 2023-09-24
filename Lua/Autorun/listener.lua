@@ -1,5 +1,7 @@
 Helpers = require "helpers"
 Actions = require "actions"
+-- Ready = false
+-- WaitTime = 420
 LogBuffer = {}
 ElapsedTicks = 0
 LastInteracted = {}
@@ -11,15 +13,17 @@ RepairingWall = {}
 Equipped = {}
 Wearing = {}
 CurrentRoom = {}
-
+RoomWater = {}
 NameToCharacter = {}
 
-Hook.Add("roundStart", "setup", function ()
+Hook.Add("roundStart", "start", function ()
     LuaUserData.MakeFieldAccessible(Descriptors["Barotrauma.CharacterInventory"], "character")
+    LuaUserData.MakeFieldAccessible(Descriptors["Barotrauma.DelayedEffect"], "setValue")
+    LuaUserData.MakeFieldAccessible(Descriptors["Barotrauma.StatusEffect"], "setValue")
     for _,character in pairs(Character.CharacterList) do
         NameToCharacter[character.Name] = character
         print(character.Name)
-        CurrentRoom[character] = character.CurrentHull.RoomName
+        CurrentRoom[character] = tostring(character.CurrentHull.DisplayName)
     end
 end)
 
@@ -47,41 +51,42 @@ end)
 --     end
 --  end)
 
-Hook.Add("item.interact", "player picks up/places and item", function(item, characterPicker, ignoreRequireditemsBool, forceSelectKeyBool, forceActionKeyBool)
-    if characterPicker.IsPlayer or characterPicker.IsHuman then
-        if LastInteracted[characterPicker.Name] == tostring(item.Name) then
-            return
-        end
-        if not item then
-            return
-        end
-        if item.hasTag("smallitem") then
-            if characterPicker.Inventory.Contains(item) then
-                msg = characterPicker.Name .. " picked up a " .. tostring(item.Name)
-            end
-            print(msg)
-            table.insert(LogBuffer, msg)
-            LastInteracted[characterPicker.Name] = tostring(item.Name)
-        end
-    end
-end)
+-- Hook.Add("item.interact", "player picks up/places and item", function(item, characterPicker, ignoreRequireditemsBool, forceSelectKeyBool, forceActionKeyBool)
+--     if characterPicker.IsPlayer or characterPicker.IsHuman then
+--         if LastInteracted[characterPicker.Name] == tostring(item.Name) then
+--             return
+--         end
+--         if not item then
+--             return
+--         end
+--         if item.hasTag("smallitem") then
+--             if characterPicker.Inventory.Contains(item) then
+--                 msg = characterPicker.Name .. " picked up a " .. tostring(item.Name)
+--             end
+--             print(msg)
+--             table.insert(LogBuffer, msg)
+--             LastInteracted[characterPicker.Name] = tostring(item.Name)
+--         end
+--     end
+-- end)
 
-Hook.Add("item.interact", "player fixes item", function(item, characterPicker, ignoreRequireditemsBool, forceSelectKeyBool, forceActionKeyBool)
-    if characterPicker.IsPlayer or characterPicker.IsHuman then
-        if LastInteracted[characterPicker.Name] == tostring(item.Name) then
-            return
-        end
-        if not item then
-            return
-        end
-        if item.Prefab.Category == 4 or item.Prefab.Subcategory == "Machine" then
-            local msg = string.format("%s is repairing a %s", characterPicker.Name, item.Name)
-            print(msg)
-            table.insert(LogBuffer, msg)
-            LastInteracted[characterPicker.Name] = tostring(item.Name)
-        end
-    end
-end)
+-- Hook.Add("item.interact", "player fixes item", function(item, characterPicker, ignoreRequireditemsBool, forceSelectKeyBool, forceActionKeyBool)
+--     if characterPicker.IsPlayer or characterPicker.IsHuman then
+--         if LastInteracted[characterPicker.Name] == tostring(item.Name) then
+--             return
+--         end
+--         if not item then
+--             return
+--         end
+--         local helditemID = characterPicker.Inventory.GetItemAt(5)
+--         if (item.Prefab.Category == 4 or item.Prefab.Subcategory == "Machine") and helditemID and (helditemID.Prefab.Subcategory == "electricalrepairtool" or helditemID.Prefab.Subcategory == "mechanicalrepairtool") then
+--             local msg = string.format("%s is repairing a %s", characterPicker.Name, item.Name)
+--             print(msg)
+--             table.insert(LogBuffer, msg)
+--             LastInteracted[characterPicker.Name] = tostring(item.Name)
+--         end
+--     end
+-- end)
  
 
 
@@ -123,6 +128,25 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
  Hook.Add("chatMessage", "debug commands", function(message, sender)
     if message == "query" then
         print(table.concat(Actions.Query(sender.Character),"\n"))
+    end
+    if message == "sabotage" then
+        Actions.SabotageTool(sender.Character)
+    end
+    if message == "sabotageS" then
+        Actions.SabotageSuit(sender.Character)
+    end
+    if message == "godmode" then
+        Actions.MakeInvincible(sender.Character, 10)
+    end
+    if message == "revive" then
+        Actions.Revive(sender.Character)
+    end
+    if message == "item" then
+        Actions.PlaceItem("Detonator", sender.Character)
+    end
+
+    if message == "monster" then
+        Actions.SpawnMonster(sender.Character)
     end
  end)
 
@@ -233,12 +257,22 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
     end
  end)
 
+ Hook.Add("statusEffect.apply.flamer", "flamer event", function(effect, deltaTime, item, targets, worldPosition)
+
+    if effect.type == ActionType.OnUse and effect.HasTargetType(StatusEffect.TargetType.Contained) and effect.setValue then
+        local msg = string.format("the %s in %s's %s exploded!", targets[1].Name, item.ParentInventory.Owner.Name, item.Name)
+        print(msg)
+        table.insert(LogBuffer, msg)
+    end
+ end)
+
  Hook.Add("statusEffect.apply.weldingtool", "welding item/limb", function (effect, deltaTime, item, targets, worldPosition)
     if effect.type == ActionType.OnSuccess and next(targets) then
         local msg
         if targets[1].ToString() == "Barotrauma.Limb" then
-            msg = string.format("%s is using a welding tool on %s's %s", 
-            item.ParentInventory.Owner.Name, targets[1].character.Name, targets[1].Name)
+            -- msg = string.format("%s is using a welding tool on %s's %s", 
+            -- item.ParentInventory.Owner.Name, targets[1].character.Name, targets[1].Name)
+            return
         else
             msg = string.format("%s is welding a door shut", item.ParentInventory.Owner.Name)
         end
@@ -261,16 +295,21 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
         print(msg)
         table.insert(LogBuffer, msg)
     end
- end)
+    if effect.type == ActionType.OnUse and effect.HasTargetType(StatusEffect.TargetType.Contained) and effect.setValue then
+        local msg = string.format("the %s in %s's %s exploded!", targets[1].Name, item.ParentInventory.Owner.Name, item.Name)
+        print(msg)
+        table.insert(LogBuffer, msg)
+    end
+end)
 
  Hook.Add("statusEffect.apply.plasmacutter", "cutting item/limb", function (effect, deltaTime, item, targets, worldPosition)
     if effect.type == ActionType.OnSuccess and next(targets) then
         local msg
-        if targets[1].ToString() == "Barotrauma.Limb" then
+        if targets[1].ToString() == "Barotrauma.Limb" and targets[1].character.Name ~= item.ParentInventory.Owner.Name then
             msg = string.format("%s is cutting through %s's %s with a plasma cutter", 
             item.ParentInventory.Owner.Name, targets[1].character.Name, targets[1].Name)
         else
-            msg = string.format("%s is cutting open a door", item.ParentInventory.Owner.Name)
+            msg = string.format("%s is cutting through a wall", item.ParentInventory.Owner.Name)
         end
         if msg == LastToolUse[item.ParentInventory.Owner.Name] then
             return
@@ -279,11 +318,8 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
         print(msg)
         table.insert(LogBuffer, msg)
     end
- end)
-
- Hook.Add("statusEffect.apply.reactor", "reactor exploded", function (effect, deltaTime, item, targets, worldPosition)
-    if effect.type == ActionType.OnBroken then
-        local msg = "The Reacter has detonated!!!"
+    if effect.type == ActionType.OnUse and effect.HasTargetType(StatusEffect.TargetType.Contained) and effect.setValue then
+        local msg = string.format("the %s in %s's %s exploded!", targets[1].Name, item.ParentInventory.Owner.Name, item.Name)
         print(msg)
         table.insert(LogBuffer, msg)
     end
@@ -294,22 +330,26 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
     if messageType == 5 then
         msg = Helpers.CleanLog(line)
         print(msg)
+        table.insert(LogBuffer, msg)
     end
-    if messageType == 2 and string.find(line,"‖%a+:.+:%d+:%d+‖") and not string.find(line,"picked") then
+    if messageType == 2 and string.find(line,"‖%a+:.+:%d+:%d+‖") then
         msg = Helpers.CleanLog(line)
+       local _, playerCount = string.gsub(line, "‖end‖", "")
+       if playerCount == 2 or string.find(line, "Human") then
+            msg = msg .. "'s inventory"
+       end
         print(msg)
+        table.insert(LogBuffer, msg)
     end
     if messageType == 1 and string.find(line,"‖%a+:.+:%d+:%d+‖") and not string.find(line,"equip") then
         msg = Helpers.CleanLog(line)
         print(msg)
-    end
-    table.insert(LogBuffer, msg)
+        table.insert(LogBuffer, msg)
+    end 
 end)
 
 Hook.Add("think", "send Logs", function ()
-    if not Game.RoundStarted then
-        return
-    end
+
     if ElapsedTicks >= 300 then
         if #LogBuffer < 7 then
             ElapsedTicks = 0
@@ -343,6 +383,10 @@ Hook.Add("think", "Player unconscious/wakes up/dead", function ()
             WasUnconsious[character] = true
         elseif WasUnconsious[character] and not character.CharacterHealth.IsUnconscious then
             local msg = string.format( "%s is no longer unconscious!",name)
+            if ConfirmedDead[character] then
+                msg = string.format( "%s is back from the dead!",name)
+                ConfirmedDead[character] = false
+            end
             print(msg)
             table.insert(LogBuffer, msg)
             WasUnconsious[character] = false
@@ -354,16 +398,15 @@ Hook.Add("think", "Player enters new room", function ()
     for name, character in pairs(NameToCharacter) do
         local room
         if not character.CurrentHull then
-            --out of pure laziness I decide to just make this the same format as the rooms
-            room = "roomname.Ocean"
+            room = "Ocean"
         else
-            room = character.CurrentHull.RoomName
+            room = tostring(character.CurrentHull.DisplayName)
         end
         if not CurrentRoom[character] or CurrentRoom[character] ~= room then
             local neighbors = Helpers.GetNeighbors(character)
             CurrentRoom[character] = room
             local msg = string.format("%s has entered the %s %s", 
-                name, string.gsub(room,"(%a+).", "", 1), 
+                name, room,
                 next(neighbors) and "; " .. Helpers.CharacterConcat(neighbors) .. string.format(" %s there.", #neighbors == 1 and "is" or "are") or "")
             
             table.insert(LogBuffer,msg)
@@ -372,3 +415,37 @@ Hook.Add("think", "Player enters new room", function ()
     end
 end)
 
+Hook.Add("think", "Hull water percentage", function ()
+    if not next(RoomWater) then
+        local hulls = Client.ClientList[1].Character.Submarine.GetHulls(false)
+        for hull in hulls do
+            if not hull.IsWetRoom then
+                print(hull.DisplayName)
+                RoomWater[hull] = {water = hull.WaterPercentage, trend = 1}
+            end
+        end
+        return
+    end
+    for hull, info in pairs(RoomWater) do
+        if math.abs( info.water - hull.WaterPercentage) >= 5 then
+            local msg     
+            if (info.water - hull.WaterPercentage) * info.trend < 0 then
+                msg = string.format( "The water level in the %s is %s!",tostring(hull.DisplayName),(info.water - hull.WaterPercentage)<0 and "increasing" or "decreasing")
+                print(msg, " trend = ",info.trend)
+                table.insert(LogBuffer, msg)
+
+                if hull.WaterPercentage >= 100 then
+                    msg = string.format("The %s is full of water", tostring(hull.DisplayName))
+                    print(msg)
+                    table.insert(LogBuffer, msg)
+                end
+               
+            end
+            RoomWater[hull].trend = (info.water - hull.WaterPercentage)/math.abs( info.water - hull.WaterPercentage )
+            RoomWater[hull].water = hull.WaterPercentage
+        end
+    end 
+end)
+
+
+--string.gsub(room,"(%a+).", "", 1)
