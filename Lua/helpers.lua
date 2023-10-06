@@ -1,12 +1,14 @@
-function Stringify(prefabs, filter)
-    local out = ""
-    for prefab in prefabs do
-        if filter(prefab) then
-            out = out .. tostring(prefab.Identifier) .. " "
-        end
-    end
-    return out
-end
+
+-- useless
+-- function Stringify(prefabs, filter)
+--     local out = ""
+--     for prefab in prefabs do
+--         if filter(prefab) then
+--             out = out .. tostring(prefab.Identifier) .. " "
+--         end
+--     end
+--     return out
+-- end
 
 -- maps character characters to their corresponding clients (useless)
 function CharacterClients()
@@ -82,17 +84,72 @@ function IndexOf(list, object)
     return 1
 end
 
-function CleanLog(log)
+function ParseLog(log)
     return string.gsub(log, "‖%a+:.+:%d+:%d+‖",""):gsub("‖end‖","")
 end
 
+local function permute(tab, n)
+    n = n or #tab
+    for i = 1, n do
+      local j = math.random(i, n)
+      tab[i], tab[j] = tab[j], tab[i]
+    end
+    return tab
+end
 
-return {Stringify = Stringify, 
-CharacterClients = CharacterClients, 
-GetHeldItems = GetHeldItems, 
-IsEquipped = IsEquipped,
-GetNeighbors = GetNeighbors,
-CharacterConcat = CharacterConcat,
-Contains = Contains,
-IndexOf = IndexOf,
-CleanLog = CleanLog}
+function GetRandomItems()
+    local tab = {}
+    for prefab in ItemPrefab.Prefabs do
+        if ((prefab.Category == 8 or prefab.Category == 16 or prefab.Category == 64 or prefab.Category == 1024) or Helpers.Contains(prefab.Tags, "instrument")) and tostring(prefab.Description) ~= "" then
+            table.insert(tab,prefab)
+        end
+    end
+    return permute(tab,#tab)
+end
+
+function TokenLength(promptLength, messageBuffer)
+    local length = 0
+    for message in messageBuffer do
+        length = length + string.len(message.content)
+    end
+    return (length + promptLength)/4
+end
+
+function CleanLog(log)
+    local buf = {}
+    local i = 1
+    while i <= #log do
+        if not next(buf) or buf[#buf] ~= log[i] then
+            table.insert(buf,log[i])
+        end
+        i = i +1
+    end
+    return table.concat(buf,"\n")
+end
+
+function CharacterStatus(character)
+    local affs = {}
+    for affliction in character.CharacterHealth.GetAllAfflictions() do
+        if affliction.Strength >= 0.5 and not Contains(affs,string.match(affliction.Name, "%b()") )then
+            table.insert(affs,string.match(affliction.Name, "%b()"))
+        end
+    end
+    return string.format("[%s: role: %s, Status: (%s) %s %s Afflictions: %s]", character.Name,tostring(character.Info.Job.Name),
+    character.IsDead and "Dead" or "Alive", character.IsUnconscious and "(Unconscious)" or "", character.GodMode and "(Invincible)" or "",   next(affs) and table.concat(affs, ", ") or "None")
+end
+
+
+return {
+    CharacterClients = CharacterClients, 
+    GetHeldItems = GetHeldItems, 
+    IsEquipped = IsEquipped,
+    GetNeighbors = GetNeighbors,
+    CharacterConcat = CharacterConcat,
+    Contains = Contains,
+    IndexOf = IndexOf,
+    GetRandomItems = GetRandomItems,
+    TokenLength = TokenLength,
+    CleanLog = CleanLog,
+    CharacterStatus = CharacterStatus,
+    ParseLog = ParseLog
+}

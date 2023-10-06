@@ -1,0 +1,171 @@
+[
+    {
+        "name": "PlaceItem",
+        "description": "Place an item near the designated character. This can be a great way to help a character out, or provide a character tools they need to do your bidding.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "Name of the item to be spawned nest to the character, item names are from the provided list of items"
+                },
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to have the item placed near them, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "SendPrivateMessage",
+        "description": "sends the character a private message, this is an effective way to influence a character's actions",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to recieve the message, character names are from the provided list of characters"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "message to be sent"
+                }
+            }
+        }
+    },
+    {
+        "name": "Announce",
+        "description": "sends a message to every character",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "message to be sent"
+                }
+            }
+        }
+    },
+    {
+        "name": "SummonBeast",
+        "description": "spawns a vicous beast at the given character's location, Be warned, The beast attacks indiscriminantly",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character that will have the beast spawned near them, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "SabotageTool",
+        "description": "if the character is using a Welding Tool, Plasma Cutter, Flamer, or any tool that accepts welding tool fuel or oxygen tanks; then the tool will explode in their hands causing moderate injury. If the character doesn't have one of these items equipped nothing will happen",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character that will have their tool sabotaged, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "SabotageSuit",
+        "description": "if the character is using a Diving Mask or Diving Suit of any kind, the oxygen tank sustaining them will be removed causing the character to suffocate. This does nothing if the character is not wearing a diving suit or diving mask.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character that will have their suit sabotaged, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "Revive",
+        "description": "bring a character back from the dead",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to be revived, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "GrantInvulnerability",
+        "description": "Grant the specified character divine protection from everything, for a limited amount of time",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to be given Divine protection, character names are from the provided list of characters"
+                },
+                "time": {
+                    "type": "integer",
+                    "description": "Time (in seconds) the effect will last for"
+                }
+            }
+        }
+    },
+    {
+        "name": "TeleportTo",
+        "description": "Teleports one character to another characters location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of character to be teleported, character names are from the provided list of characters"
+                },
+                "destination": {
+                    "type": "string",
+                    "description": "Name of character that the other character will be brought to, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "CureCharacter",
+        "description": "Cure a character of all afflictions",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to be cured, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "MakeIll",
+        "description": "Make a character very Ill (nonlethal)",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to be made ill, character names are from the provided list of characters"
+                }
+            }
+        }
+    },
+    {
+        "name": "Nothing",
+        "description": "Sit back and let things play out, you shouldn't always be interfering lest the mortals take you for granted",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                
+            }
+        }
+    }
+]

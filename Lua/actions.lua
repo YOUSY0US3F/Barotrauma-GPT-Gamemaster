@@ -1,12 +1,42 @@
 Helpers = require "helpers"
+LogBuffer = {}
+DirectorNames = {"God?", "???!", "strange voice", "a voice", "he47fgv", "Game?", "Server?"}
+NameToCharacter = {}
+Hook.Add("roundStart", "collect characters", function ()
+    for _,character in pairs(Character.CharacterList) do
+        print(character.Name)
+        NameToCharacter[character.Name] = character
+    end
+    Hook.Add("character.created", "character spawns in", function (createdCharacter)
+        if createdCharacter.IsHuman and not NameToCharacter[createdCharacter.Name] then
+            print(createdCharacter.Name)
+            NameToCharacter[createdCharacter.Name] = createdCharacter
+        end
+    end)
+end)
 
-DirectorNames = {"God?", "???!", "strange voice", "a voice", "he47fgv", "Game?", "it"}
+function Log(message)
+    table.insert(LogBuffer, message)
+end
+
+function DumpLogs(func)
+    if #LogBuffer < 1 then return end
+    func(LogBuffer)
+    ElapsedTicks = 0
+    LogBuffer = {}
+end
+
+function DeleteLogs()
+    LogBuffer = {}
+end
 
 local function getDirectorName()
     return DirectorNames[math.random(#DirectorNames)]
 end
 
-function PlaceItem(identifier, character)
+function PlaceItem(arg)
+    local identifier = arg.item
+    local character = NameToCharacter[arg.character]
     local prefab = ItemPrefab.GetItemPrefab(identifier)
     Entity.Spawner.AddItemToSpawnQueue(prefab, character.WorldPosition, nil, nil, function(item)
         print(item.Name .. " Has been spawned near " .. character.Name)
@@ -14,35 +44,49 @@ function PlaceItem(identifier, character)
         local chatMessage = ChatMessage.Create("?", "Something appeared at your feet...", ChatMessageType.ServerMessageBoxInGame, nil, nil)
         chatMessage.Color = Color(255,182,193)
         Game.SendDirectChatMessage(chatMessage, client)
+        Log(string.format("You Placed a %s near %s", item.Name, character.Name))
     end)
 end
 
--- function GiveAffliction(identifier, character, potency)
---     local aff = AfflictionPrefab.Prefabs[identifier]
---     local limb = character.AnimController.Limbs[1]
+function MakeIll(arg)
+    local character = NameToCharacter[arg.character]
+    local aff = AfflictionPrefab.Prefabs["nausea"]
+    local limb = character.AnimController.Limbs[1]
 
---     char.CharacterHealth.ApplyAffliction(limb, aff.Instantiate(potency))
--- end
-
-function SendDM(message, character)
-    local client = Util.FindClientCharacter(character)
-    local chatMessage = ChatMessage.Create(getDirectorName(), message, ChatMessageType.Default, nil, nil)
-    chatMessage.Color = Color(255,182,193)
-    Game.SendDirectChatMessage(chatMessage, client)
+    char.CharacterHealth.ApplyAffliction(limb, aff.Instantiate(100))
+    Log(string.format("You made %s Ill", character.Name))
 end
 
-function Announce(message)
+function SendDM(arg)
+    local message = arg.message
+    local character = NameToCharacter[arg.character]
+    if not character.IsPlayer then
+        Log(string.format("Your Message to %s fell upon deaf ears", arg.character))
+        return
+    end
+    local client = Util.FindClientCharacter(character)
+    local chatMessage = ChatMessage.Create(getDirectorName(), message, ChatMessageType.Default, nil, nil)
+    chatMessage.Color = Color(255,165,0)
+    Game.SendDirectChatMessage(chatMessage, client)
+    Log(string.format("You Messaged %s: %s", arg.character, message))
+end
+
+function Announce(arg)
+    local message = arg.message
     for _, client in pairs(Client.ClientList) do
         local chatMessage = ChatMessage.Create(getDirectorName(), message, ChatMessageType.Default, nil, nil)
         chatMessage.Color = Color(255, 255, 255)
         Game.SendDirectChatMessage(chatMessage, client)
+        Log(string.format("You Announced : %s", message))
     end
 end
 
-function SpawnMonster(character)
-    pos = Vector2(character.WorldPosition.X - 20, character.WorldPosition.Y)
+function SpawnMonster(arg)
+    local character = NameToCharacter[arg.character]
+    local pos = Vector2(character.WorldPosition.X - 20, character.WorldPosition.Y)
     Entity.Spawner.AddCharacterToSpawnQueue("mudraptor", pos, function(ent)
         print(ent.Name .. " Has been spawned on: " .. character.Name)
+        Log(string.format("You Summoned a Beast near %s", character.Name))
     end)
 end
 
@@ -68,7 +112,7 @@ function Query(character)
     return out
 end
 
-function Sabotage(item)
+local function Sabotage(item)
     local tank = item.OwnInventory.GetItemAt(0)
     local repl
     if tank.HasTag("weldingtoolfuel") then
@@ -82,17 +126,20 @@ function Sabotage(item)
     end)
 end
 
-function SabotageTool(character)
+function SabotageTool(arg)
+    local character = NameToCharacter[arg.character]
     local item = character.Inventory.GetItemAt(5)
     if item and item.HasTag("mountableweapon") then
         if item.OwnInventory and (item.OwnInventory.GetItemAt(0).HasTag("weldingtoolfuel") or item.OwnInventory.GetItemAt(0).HasTag("oxygensource")) then
             Sabotage(item)
+            Log(string.format("You Sabotaged %s\'s %s", character.Name, item.Name))
             return
         end
     end
 end
 
-function SabotageSuit(character)
+function SabotageSuit(arg)
+    local character = NameToCharacter[arg.character]
     local suit = character.Inventory.GetItemAt(4)
     local mask = character.Inventory.GetItemAt(2)
     local item
@@ -104,14 +151,20 @@ function SabotageSuit(character)
         return
     end
     Sabotage(item)
+    Log(string.format("You Sabotaged %s\'s %s", character.Name, item.Name))
 end
 
-function Revive(character)
+function Revive(arg)
+    local character = NameToCharacter[arg.character]
     character.Revive(true)
     Util.FindClientCharacter(character).SetClientCharacter(character)
+    --print(character," is back from the dead!")
+    Log(string.format("You Revived %s", character.Name))
 end
 
-function MakeInvincible(character, time)
+function MakeInvincible(arg)
+    local character = NameToCharacter[arg.character]
+    local time = arg.time
     character.GodMode = true
     print(character.Name," has godmode")
     local client = Util.FindClientCharacter(character)
@@ -119,19 +172,38 @@ function MakeInvincible(character, time)
     chatMessage.Color = Color(255,182,193)
     Game.SendDirectChatMessage(chatMessage, client)
     local tickTime = time * 60
+    Log(string.format("You Granted %s Invinciblity for %d seconds", character.Name, time))
     Hook.Add("think", character.Name .. " GodModeTimer", function ()
         if tickTime <= 0 then
-            print(character.Name, "is no longer invincible")
+            print(character.Name, " is no longer invincible")
+            Log(string.format("%s is no longer invincible", character.Name))
             local client = Util.FindClientCharacter(character)
             local chatMessage = ChatMessage.Create("?", "You are mortal once more.", ChatMessageType.ServerMessageBoxInGame, nil, nil)
             chatMessage.Color = Color(255,182,193)
+            Game.SendDirectChatMessage(chatMessage, client)
             Hook.Remove("think", character.Name .. " GodModeTimer")
             return
         end
         tickTime = tickTime - 1
     end)
 end
-return{PlaceItem = PlaceItem, 
+
+function TeleportCharacter(arg)
+    local character = NameToCharacter[arg.character]
+    local destination = NameToCharacter[arg.destination]
+    character.TeleportTo(destination.WorldPosition)
+    Log(string.format("You Teleported %s to %s", character.Name, destination.Name))
+end
+
+function CureCharacter(arg)
+    local character = NameToCharacter[arg.character]
+    character.CharacterHealth.RemoveAllAfflictions()
+    Log(string.format("You Cured %s", character.Name))
+end
+
+return{
+    NameToCharacter = NameToCharacter,
+    PlaceItem = PlaceItem, 
     SendDM = SendDM,
     Announce = Announce,
     SpawnMonster = SpawnMonster,
@@ -139,5 +211,11 @@ return{PlaceItem = PlaceItem,
     SabotageTool = SabotageTool,
     SabotageSuit = SabotageSuit,
     Revive = Revive,
-    MakeInvincible = MakeInvincible
+    MakeInvincible = MakeInvincible,
+    TeleportCharacter = TeleportCharacter,
+    CureCharacter = CureCharacter,
+    Log = Log,
+    DumpLogs = DumpLogs,
+    DeleteLogs = DeleteLogs,
+    MakeIll = MakeIll
 }

@@ -1,0 +1,22 @@
+{
+    "Lua.diagnostics.globals": [
+        "Status",
+        "Hook",
+        "Character",
+        "ItemPrefab",
+        "Entity",
+        "Util",
+        "ChatMessage",
+        "ChatMessageType",
+        "Color",
+        "Game",
+        "Vector2",
+        "Client",
+        "LuaUserData",
+        "Descriptors",
+        "Networking"
+    ],
+    "Lua.diagnostics.disable": [
+        "undefined-global"
+    ]
+}
