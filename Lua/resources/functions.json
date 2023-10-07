@@ -7,7 +7,7 @@
             "properties": {
                 "item": {
                     "type": "string",
-                    "description": "Name of the item to be spawned nest to the character, item names are from the provided list of items"
+                    "description": "Name of the item to be spawned next to the character, item names are from the provided list of items"
                 },
                 "character": {
                     "type": "string",
@@ -159,12 +159,19 @@
         }
     },
     {
-        "name": "Nothing",
-        "description": "Sit back and let things play out, you shouldn't always be interfering lest the mortals take you for granted",
+        "name": "ReplaceHeldItem",
+        "description": "Replace whatever the character is holding with your chosen item, the chosen item must be a tool/ weapon",
         "parameters": {
             "type": "object",
             "properties": {
-                
+                "item": {
+                    "type": "string",
+                    "description": "Name of the item to replace the character's current held item"
+                },
+                "character": {
+                    "type": "string",
+                    "description": "Name of the character to have their item replaced"
+                }
             }
         }
     }

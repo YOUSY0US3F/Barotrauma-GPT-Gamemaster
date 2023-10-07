@@ -129,13 +129,18 @@ end
 
 function CharacterStatus(character)
     local affs = {}
+    local held = {}
+    for item in character.HeldItems do
+        table.insert(held, item.Name)
+    end
     for affliction in character.CharacterHealth.GetAllAfflictions() do
         if affliction.Strength >= 0.5 and not Contains(affs,string.match(affliction.Name, "%b()") )then
             table.insert(affs,string.match(affliction.Name, "%b()"))
         end
     end
-    return string.format("[%s: role: %s, Status: (%s) %s %s Afflictions: %s]", character.Name,tostring(character.Info.Job.Name),
-    character.IsDead and "Dead" or "Alive", character.IsUnconscious and "(Unconscious)" or "", character.GodMode and "(Invincible)" or "",   next(affs) and table.concat(affs, ", ") or "None")
+    return string.format("[%s: role: %s, Status: (%s) %s %s, Afflictions: %s, Held Items: %s]", character.Name,tostring(character.Info.Job.Name),
+    character.IsDead and "Dead" or "Alive", character.IsUnconscious and "(Unconscious)" or "", character.GodMode and "(Invincible)" or "",   
+    next(affs) and table.concat(affs, ", ") or "None", next(held) and table.concat(held, ", ") or "None")
 end
 
 

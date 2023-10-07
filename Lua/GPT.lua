@@ -14,7 +14,8 @@ CallToFunction = {
     ["TeleportTo"] = Actions.TeleportCharacter,
     ["CureCharacter"] = Actions.CureCharacter,
     ["MakeIll"] = Actions.MakeIll,
-    ["Nothing"] = function (arg) print("did nothing") end
+    ["Nothing"] = function (arg) print("did nothing") end,
+    ["ReplaceHeldItem"] = Actions.ReplaceEquippedItem
 
 }
 -- CurrentDir=io.popen"cd":read'*l'
@@ -28,9 +29,11 @@ CallToFunction = {
 -- FunctionList = JSON.decode(functionFile:read("*a"))
 -- io.close(promptFile)
 -- io.close(functionFile)
-Prompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\prompt.txt")
-FunctionList = JSON.decode(File.Read("LocalMods/Gamemaster/Lua/resources/functions.json"))
 
+MadPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\madGodPrompt.txt")
+NormalPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\prompt.txt")
+FunctionList = JSON.decode(File.Read("LocalMods/Gamemaster/Lua/resources/functions.json"))
+Prompt = NormalPrompt
 SixteenK = {
     name = "gpt-3.5-turbo-16k",
     MaxTokens = 16385
@@ -40,8 +43,26 @@ Turbo = {
     MaxTokens = 4097
 }
 Model = Turbo
+Temperature = 1
 MessageBuffer = {}
-FunctionLen = 2974
+FunctionLen = 3774
+
+Hook.Add("chatMessage", "examples.killCommand", function(message, client) 
+    if client.HasPermission(ClientPermissions.ManageSettings) then
+        if message == "godswap" then
+            if Prompt == NormalPrompt then
+                Prompt = MadPrompt
+                Temperature = 1.3
+                Actions.Announce({message = "You swear you heard the water laughing at you"})
+            else
+                Temperature = 1
+                Prompt = NormalPrompt
+                Actions.Announce({message = "Things start to make a little more sense now"})
+            end
+        end
+        return true
+    end
+end)
 
 function CleanMessage(response, message)
     local info = JSON.decode(response)
@@ -157,7 +178,10 @@ end
 
 local function sendToGPT(data)
     Networking.HttpPost("https://api.openai.com/v1/chat/completions",function (resolve)
-        execute(resolve)
+       local ok, result = pcall(execute, resolve)
+       if not ok then
+            print(resolve)
+       end
     end, data,"application/json",{["Authorization"] = string.format("Bearer %s", Secret.TOKEN)},nil)
 end
 
@@ -172,6 +196,7 @@ function Upload(log)
     local data = JSON.encode({
         model = Model.name,
         messages = MessageBuffer,
+        temperature = Temperature,
         functions = FunctionList
     })
 

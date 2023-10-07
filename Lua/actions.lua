@@ -73,8 +73,9 @@ end
 
 function Announce(arg)
     local message = arg.message
+    local director = "???"
     for _, client in pairs(Client.ClientList) do
-        local chatMessage = ChatMessage.Create(getDirectorName(), message, ChatMessageType.Default, nil, nil)
+        local chatMessage = ChatMessage.Create(director, message, ChatMessageType.Default, nil, nil)
         chatMessage.Color = Color(255, 255, 255)
         Game.SendDirectChatMessage(chatMessage, client)
         Log(string.format("You Announced : %s", message))
@@ -105,7 +106,7 @@ function Query(character)
     buffer = {}
     local out = {}
     --making this I'm starting to wonder why I did all that stuff above with info
-    table.insert( out, string.format("%s is %s", character.Name, info["Alive"] and "Alive" or "Dead") )
+    table.insert(out, string.format("%s is %s", character.Name, info["Alive"] and "Alive" or "Dead"))
     table.insert(out, string.format("%s is currently %s in water", character.Name, character.AnimController.InWater and "" or "not"))
     table.insert(out, string.format("%s is currently in the %s %s", character.Name, string.gsub(info["Hull"], "(%a+).", "", 1), next(info["NearBy"]) and "with: " .. table.concat(info["NearBy"], ", ") or ""))
     table.insert(out, string.format("%s is holding these item(s): %s", character.Name, next(info["HeldItems"]) and table.concat(info["HeldItems"], ",") or "nothing"))
@@ -201,6 +202,30 @@ function CureCharacter(arg)
     Log(string.format("You Cured %s", character.Name))
 end
 
+function ReplaceEquippedItem(arg)
+    local character = NameToCharacter[arg.character]
+    local prefab = ItemPrefab.GetItemPrefab(arg.item)
+    if not character.Inventory.CanBePutInSlot(prefab, InvSlotType.RightHand, nil, nil) then
+        PlaceItem(arg)
+        return
+    end
+    local equip = character.Inventory.getItemInLimbSlot(InvSlotType.RightHand) ~= nil and character.Inventory.getItemInLimbSlot(InvSlotType.RightHand) or character.Inventory.getItemInLimbSlot(InvSlotType.LeftHand)
+    local equipName = equip and equip.Name or "Nothing"
+    for i in character.HeldItems do
+        character.Inventory.RemoveItem(i)
+     end
+    Entity.Spawner.AddItemToSpawnQueue(prefab, character.Inventory, nil, nil, function (thing)
+        character.Inventory.ForceToSlot(thing, InvSlotType.RightHand)
+        equip.Remove()
+        equip.Visible = false
+        local client = Util.FindClientCharacter(character)
+        local chatMessage = ChatMessage.Create("?", string.format("It's a miracle! Your %s turned into a %s!", equipName, thing.Name), ChatMessageType.ServerMessageBoxInGame, nil, nil)
+        chatMessage.Color = Color(255,182,193)
+        Game.SendDirectChatMessage(chatMessage, client)
+        Log(string.format("You turned %s\'s %s into %s", character.Name, equipName, thing.Name))
+    end, true, false, InvSlotType.RightHand)
+end
+
 return{
     NameToCharacter = NameToCharacter,
     PlaceItem = PlaceItem, 
@@ -217,5 +242,6 @@ return{
     Log = Log,
     DumpLogs = DumpLogs,
     DeleteLogs = DeleteLogs,
-    MakeIll = MakeIll
+    MakeIll = MakeIll,
+    ReplaceEquippedItem = ReplaceEquippedItem
 }

@@ -15,7 +15,7 @@ Equipped = {}
 Wearing = {}
 CurrentRoom = {}
 RoomWater = {}
-Delay = 5 * 60
+Delay = 10 * 60
 NameToCharacter = Actions.NameToCharacter
 
 Hook.Add("roundStart", "start", function ()
@@ -28,7 +28,7 @@ Hook.Add("roundStart", "start", function ()
             print("added detector for:", tostring(prefab.Identifier))
             Hook.Add(string.format("statusEffect.apply.%s", tostring(prefab.Identifier)), string.format("%s explodes",tostring(prefab.Identifier)), function (effect, deltaTime, 
                 item, targets, worldPosition)
-                if effect.type == ActionType.Always then
+                if effect.type == ActionType.Always or effect.type == ActionType.OnFire then
                     return
                 end
                 local msg = string.format("%s exploded!",item.Name)
@@ -200,6 +200,10 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
 
 --     if message == "monster" then
 --         Actions.SpawnMonster({character = sender.Character.Name})
+--     end
+
+--     if message == "swap" then
+--         Actions.ReplaceEquippedItem({character = sender.Character.Name, item = "smg"})
 --     end
 --  end)
 
