@@ -186,12 +186,14 @@ local function sendToGPT(data)
 end
 
 function Upload(log)
-    local message = Helpers.CleanLog(log)
+    local messages = Helpers.CleanLog(log)
     local prompt = {
         role = "system",
         content = GeneratePrompt()
     }
-    addToBuffer(prompt.content, message)
+    for message in messages do
+        addToBuffer(prompt.content, message)
+    end
     table.insert(MessageBuffer,1,prompt)
     local data = JSON.encode({
         model = Model.name,
@@ -209,7 +211,8 @@ function Upload(log)
     -- out:write(data .. ",\n")
     -- out:close()
     sendToGPT(data)
-    print(Helpers.TokenLength(string.len(prompt.content)+FunctionLen, MessageBuffer))
+
+    print("message sent, Tokens: ",Helpers.TokenLength(string.len(prompt.content)+FunctionLen, MessageBuffer))
     table.remove(MessageBuffer,1)
 end
 

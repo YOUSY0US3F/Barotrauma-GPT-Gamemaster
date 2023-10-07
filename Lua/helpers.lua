@@ -124,7 +124,7 @@ function CleanLog(log)
         end
         i = i +1
     end
-    return table.concat(buf,"\n")
+    return buf
 end
 
 function CharacterStatus(character)
@@ -138,7 +138,7 @@ function CharacterStatus(character)
             table.insert(affs,string.match(affliction.Name, "%b()"))
         end
     end
-    return string.format("[%s: role: %s, Status: (%s) %s %s, Afflictions: %s, Held Items: %s]", character.Name,tostring(character.Info.Job.Name),
+    return string.format("[%s: role: %s, Status: (%s) %s %s, Afflictions: %s, Held Item(s): %s]", character.Name,tostring(character.Info.Job.Name),
     character.IsDead and "Dead" or "Alive", character.IsUnconscious and "(Unconscious)" or "", character.GodMode and "(Invincible)" or "",   
     next(affs) and table.concat(affs, ", ") or "None", next(held) and table.concat(held, ", ") or "None")
 end
