@@ -12,7 +12,7 @@
 - Open Barotrauma
 - Host a Server
    - When making the game there will be a dropdown for "Server executable" set this to "Lua for Barotrauma"
-- press F3 and feast your eyes upon the errors :)
+- ~~press F3 and feast your eyes upon the errors :)~~
 
 # Refrences
 - [Lua for barotrauma docs](https://evilfactory.github.io/LuaCsForBarotrauma/lua-docs/manual/getting-started/)
