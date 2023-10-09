@@ -107,22 +107,29 @@ function GetRandomItems()
     return permute(tab,#tab)
 end
 
-function TokenLength(promptLength, messageBuffer)
+function TokenLength(messageBuffer)
     local length = 0
     for message in messageBuffer do
-        length = length + string.len(message.content)
+        length = length + string.len(message.content) + string.len(message.role)
     end
-    return (length + promptLength)/4
+    return (length)/4
 end
 
-function CleanLog(log)
+
+function CleanLog(log, delay)
     local buf = {}
-    local i = 1
-    while i <= #log do
-        if not next(buf) or buf[#buf] ~= log[i] then
-            table.insert(buf,log[i])
+    local i, message = next(log)
+    local divs = math.ceil(#log/delay)
+    while i do
+        local clust = {}
+        for iter = 1,divs do
+            if not i then
+                break
+            end
+            table.insert(clust,message)
+            i, message = next(log, i)
         end
-        i = i +1
+        table.insert(buf, table.concat(clust, ","))
     end
     return buf
 end

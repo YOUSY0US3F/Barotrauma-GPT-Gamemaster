@@ -14,40 +14,28 @@ CallToFunction = {
     ["TeleportTo"] = Actions.TeleportCharacter,
     ["CureCharacter"] = Actions.CureCharacter,
     ["MakeIll"] = Actions.MakeIll,
-    ["Nothing"] = function (arg) print("did nothing") end,
     ["ReplaceHeldItem"] = Actions.ReplaceEquippedItem
 
 }
--- CurrentDir=io.popen"cd":read'*l'
--- local promptFile = io.open(string.format("%s/resources/prompt.txt", CurrentDir),"r")
--- local functionFile = io.open(string.format("%s/resources/functions.json", CurrentDir),"r")
--- if not promptFile or not functionFile then
---     print("no prompt found!!!!")
---     return
--- end
--- Prompt = promptFile:read("*a")
--- FunctionList = JSON.decode(functionFile:read("*a"))
--- io.close(promptFile)
--- io.close(functionFile)
-
+TokenBuffer = {}
 MadPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\madGodPrompt.txt")
 NormalPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\prompt.txt")
 FunctionList = JSON.decode(File.Read("LocalMods/Gamemaster/Lua/resources/functions.json"))
 Prompt = NormalPrompt
 SixteenK = {
     name = "gpt-3.5-turbo-16k",
-    MaxTokens = 16385
+    MaxTokens = 16000
 }
 Turbo = {
     name = "gpt-3.5-turbo",
-    MaxTokens = 4097
+    MaxTokens = 4000
 }
 Model = Turbo
 Temperature = 1
 MessageBuffer = {}
-FunctionLen = 3774
+FunctionLen = 3160
 
-Hook.Add("chatMessage", "examples.killCommand", function(message, client) 
+Hook.Add("chatMessage", "admin commands", function(message, client) 
     if client.HasPermission(ClientPermissions.ManageSettings) then
         if message == "godswap" then
             if Prompt == NormalPrompt then
@@ -59,10 +47,35 @@ Hook.Add("chatMessage", "examples.killCommand", function(message, client)
                 Prompt = NormalPrompt
                 Actions.Announce({message = "Things start to make a little more sense now"})
             end
+            return true
         end
-        return true
+        if message == "forcestart" then
+            Hook.Call("roundstart", {})
+            print("called roundstart")
+            return true
+        end
+        if message == "stressTest" then
+            print("stress test started")
+            for i = 1, 2 * Model.MaxTokens do        
+                Actions.Log(string.format("Stress Test Line Number %d", i))
+            end
+            return true
+        end
+
     end
 end)
+
+local function appendTokens(tokens)
+    if not next(TokenBuffer) then
+        TokenBuffer = tokens
+        return
+    end
+    local prev = TokenBuffer[#TokenBuffer]
+    for token in tokens do
+        table.insert(TokenBuffer, token+prev)
+        prev = token
+    end
+end
 
 function CleanMessage(response, message)
     local info = JSON.decode(response)
@@ -78,27 +91,60 @@ function CleanMessage(response, message)
     return message
 end
 
-local function addToBuffer(prompt, message)
-    local msg = {
-        role = "user",
-        content = message
-    }
-    table.insert( MessageBuffer , msg)
-    if (string.len(prompt) + FunctionLen)/4 >= Model.MaxTokens/2 then
-        if Model.name == Turbo.name then
-            Model = SixteenK
-        else
-            print("fatal error: context too damn big")
-        end
-    elseif Model.name == SixteenK.name then
-        Model = Turbo
+-- local function addToBuffer(prompt, messages)
+--     for message in messages do
+--         local msg = {
+--             role = "user",
+--             content = message
+--         }
+--         table.insert( MessageBuffer , msg)
+--     end
+--     if (string.len(prompt) + FunctionLen)/4 >= Model.MaxTokens/2 then
+--         if Model.name == Turbo.name then
+--             Model = SixteenK
+--         else
+--             print("fatal error: context too damn big")
+--         end
+--     elseif Model.name == SixteenK.name and (string.len(prompt) + FunctionLen)/4 < Turbo.MaxTokens/2 then
+--         Model = Turbo
+--     end
+
+--     while Helpers.TokenLength(MessageBuffer) >= Model.MaxTokens/2 do
+--         table.remove(MessageBuffer,1)
+--     end
     
+-- end
+local function propagate(value)
+    for i = 1, #TokenBuffer do
+        TokenBuffer[i] = TokenBuffer[i] - value
     end
-    while Helpers.TokenLength(string.len(prompt)+FunctionLen, MessageBuffer) > Model.MaxTokens do
-        table.remove(MessageBuffer,1)
-    end
-    
 end
+
+local function addToBuffer(messages)
+    for message in messages do
+        table.insert(MessageBuffer, message)
+    end
+    if TokenBuffer[#TokenBuffer] + (#TokenBuffer-1) >= Model.MaxTokens/2 then
+        while TokenBuffer[1] do
+            local token = TokenBuffer[1]
+            if ((TokenBuffer[#TokenBuffer] + (#TokenBuffer-1)) - token) < Model.MaxTokens/2 then
+                table.remove(TokenBuffer,1)
+                table.remove(MessageBuffer,1)
+                propagate(token)
+                break
+            else
+                table.remove(TokenBuffer, 1)
+                table.remove(MessageBuffer,1)
+            end
+        end
+    end
+    return {
+        role = "user",
+        content = table.concat(MessageBuffer, ",")
+    }
+end
+
+
 
 function Moderate(message, callback)
     local data = JSON.encode({input = message})
@@ -181,38 +227,49 @@ local function sendToGPT(data)
        local ok, result = pcall(execute, resolve)
        if not ok then
             print(resolve)
+            Model = SixteenK
        end
     end, data,"application/json",{["Authorization"] = string.format("Bearer %s", Secret.TOKEN)},nil)
 end
 
-function Upload(log)
-    local messages = Helpers.CleanLog(log)
+function Upload(log, tokens)
+    appendTokens(tokens)
     local prompt = {
         role = "system",
         content = GeneratePrompt()
     }
-    for message in messages do
-        addToBuffer(prompt.content, message)
+    if (string.len(prompt.content) + FunctionLen)/4 >= Model.MaxTokens/2 then
+        if Model.name == Turbo.name then
+            Model = SixteenK
+        else
+            print("fatal error: context too damn big")
+        end
+    elseif Model.name == SixteenK.name and (string.len(prompt.content) + FunctionLen)/4 < Turbo.MaxTokens/2 then
+        Model = Turbo
     end
-    table.insert(MessageBuffer,1,prompt)
+    if tokens[#tokens] >= Turbo.MaxTokens/2 then
+        Model = SixteenK
+    end 
+    local msg = addToBuffer(log)
     local data = JSON.encode({
         model = Model.name,
-        messages = MessageBuffer,
+        messages = {
+            prompt,
+            msg
+        },
         temperature = Temperature,
         functions = FunctionList
     })
+    local out = io.open("E:\\Games\\Steam\\steamapps\\common\\Barotrauma\\LocalMods\\Gamemaster\\Lua\\resources\\UploadLog.json", "a")
+    if not out then
+        print("no output file found :(")
+        return
+    end
+    out:write(data .. ",\n")
+    out:close()
+    -- sendToGPT(data)
 
-
-    -- local out = io.open("E:\\Games\\Steam\\steamapps\\common\\Barotrauma\\LocalMods\\Gamemaster\\Lua\\resources\\UploadLog.json", "a")
-    -- if not out then
-    --     print("no output file found :(")
-    --     return
-    -- end
-    -- out:write(data .. ",\n")
-    -- out:close()
-    sendToGPT(data)
-
-    print("message sent, Tokens: ",Helpers.TokenLength(string.len(prompt.content)+FunctionLen, MessageBuffer))
+    print("message sent, Tokens: ",TokenBuffer[#TokenBuffer])
     table.remove(MessageBuffer,1)
 end
 

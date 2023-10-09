@@ -1,5 +1,6 @@
 Helpers = require "helpers"
 LogBuffer = {}
+TokenBuffer = {}
 DirectorNames = {"God?", "???!", "strange voice", "a voice", "he47fgv", "Game?", "Server?"}
 NameToCharacter = {}
 Hook.Add("roundStart", "collect characters", function ()
@@ -14,14 +15,35 @@ Hook.Add("roundStart", "collect characters", function ()
         end
     end)
 end)
+local function cacheTokens(message)
+    if not next(TokenBuffer) then
+        table.insert(TokenBuffer, #message/4)
+        return
+    end
+    table.insert(TokenBuffer, TokenBuffer[#TokenBuffer]+(#message/4))
+end
 
+local function DumpTokens()
+    local copy = {}
+    for val in TokenBuffer do
+        table.insert(copy, val)
+    end
+    TokenBuffer = {}
+    return copy
+end
 function Log(message)
-    table.insert(LogBuffer, message)
+    if message ~= LogBuffer[#LogBuffer] then
+        table.insert(LogBuffer, message)
+        cacheTokens(message)
+    end
 end
 
 function DumpLogs(func)
-    if #LogBuffer < 1 then return end
-    func(LogBuffer)
+    if #LogBuffer < 1 then 
+        print("nothing happened, aborting")
+        return 
+    end
+    func(LogBuffer, DumpTokens())
     ElapsedTicks = 0
     LogBuffer = {}
 end

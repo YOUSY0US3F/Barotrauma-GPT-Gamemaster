@@ -50,7 +50,7 @@ Hook.Add("roundStart", "start", function ()
             Hook.Add("think", "send Logs", function ()
                 if ElapsedTicks >= Delay then
                     Actions.DumpLogs(GPT.Upload)
-                    print("message sent, delay: ", Delay/60)
+                    print("Upload started, delay: ", Delay/60)
                     Delay = math.random(10,60) * 60
                     ElapsedTicks = 0
                     return
@@ -142,7 +142,7 @@ end)
 
 
 Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
-    if itemUser == nil then
+    if itemUser == nil or item.Name == "Periscope" then
         return
     end
     if itemUser.IsPlayer or itemUser.IsHuman then
