@@ -107,15 +107,6 @@ function GetRandomItems()
     return permute(tab,#tab)
 end
 
-function TokenLength(messageBuffer)
-    local length = 0
-    for message in messageBuffer do
-        length = length + string.len(message.content) + string.len(message.role)
-    end
-    return (length)/4
-end
-
-
 function CleanLog(log, delay)
     local buf = {}
     local i, message = next(log)
@@ -142,7 +133,7 @@ function CharacterStatus(character)
     end
     for affliction in character.CharacterHealth.GetAllAfflictions() do
         if affliction.Strength >= 0.5 and not Contains(affs,string.match(affliction.Name, "%b()") )then
-            table.insert(affs,string.match(affliction.Name, "%b()"))
+            table.insert(affs,string.format("%s %s",string.match(affliction.Name, "%b()"), affliction.Source and "Cause: " .. affliction.Source.Name or ""))
         end
     end
     return string.format("[%s: role: %s, Status: (%s) %s %s, Afflictions: %s, Held Item(s): %s]", character.Name,tostring(character.Info.Job.Name),

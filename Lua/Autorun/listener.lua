@@ -4,7 +4,7 @@ GPT = require "GPT"
 JSON = require "json"
 Ready = false
 ElapsedTicks = 0
-Delay = math.random(10,60) * 60
+Delay = math.random(5,20) * 60
 -- LastInteracted = {}
 LastUsed = {}
 -- WasUnconsious = {}
@@ -51,7 +51,7 @@ Hook.Add("roundStart", "start", function ()
                 if ElapsedTicks >= Delay then
                     Actions.DumpLogs(GPT.Upload)
                     print("Upload started, delay: ", Delay/60)
-                    Delay = math.random(10,60) * 60
+                    Delay = math.random(3,20) * 60
                     ElapsedTicks = 0
                     return
                 end
@@ -227,15 +227,17 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
     end
  end)
 
---  Hook.Add("character.ApplyAffliction", "player gets affliction", function (character, limbHealth, newAffliction, allowStacking)
---         if character.GetAffliction(newAffliction.Prefab.Identifier) then
---             return
---         end
---         local msg = string.format( "%s now has %s %s", character.Character.Name, newAffliction.Name, newAffliction.Source and "caused by: " .. newAffliction.Source.Name or "")
---         print(msg)
---         Actions.Log(msg)
+ Hook.Add("character.ApplyAffliction", "player gets affliction", function (character, limbHealth, newAffliction, allowStacking)
+        if character.GetAffliction(newAffliction.Prefab.Identifier) then
+            return
+        end
+        if newAffliction.Source and newAffliction.Source.IsPlayer then
+            local msg = string.format( "%s now has %s %s", character.Character.Name, newAffliction.Name, newAffliction.Source and "caused by: " .. newAffliction.Source.Name or "")
+            print(msg)
+            Actions.Log(msg)
+        end
    
---  end)
+ end)
 
  Hook.Add("inventoryPutItem", "player acquires new item or equips/unequips item", function(inventory, item, characterUser, index, swapWholeStackBool)
     if not characterUser then
@@ -521,7 +523,7 @@ Hook.Add("think", "Hull water percentage", function ()
         return
     end
     for hull, info in pairs(RoomWater) do
-        if math.abs( info.water - hull.WaterPercentage) >= 40 then
+        if math.abs( info.water - hull.WaterPercentage) >= 60 then
             local msg     
             if (info.water - hull.WaterPercentage) * info.trend < 0 then
                 msg = string.format( "The water level in the %s is %s!",tostring(hull.DisplayName),(info.water - hull.WaterPercentage)<0 and "increasing" or "decreasing")

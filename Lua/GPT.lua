@@ -15,7 +15,6 @@ CallToFunction = {
     ["CureCharacter"] = Actions.CureCharacter,
     ["MakeIll"] = Actions.MakeIll,
     ["ReplaceHeldItem"] = Actions.ReplaceEquippedItem
-
 }
 TokenBuffer = {}
 MadPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\madGodPrompt.txt")
@@ -31,7 +30,7 @@ Turbo = {
     MaxTokens = 4000
 }
 Model = Turbo
-Temperature = 1
+Temperature = 1.4
 MessageBuffer = {}
 FunctionLen = 3160
 
@@ -40,18 +39,13 @@ Hook.Add("chatMessage", "admin commands", function(message, client)
         if message == "godswap" then
             if Prompt == NormalPrompt then
                 Prompt = MadPrompt
-                Temperature = 1.3
+                Temperature = 2
                 Actions.Announce({message = "You swear you heard the water laughing at you"})
             else
                 Temperature = 1
                 Prompt = NormalPrompt
                 Actions.Announce({message = "Things start to make a little more sense now"})
             end
-            return true
-        end
-        if message == "forcestart" then
-            Hook.Call("roundstart", {})
-            print("called roundstart")
             return true
         end
         if message == "stressTest" then
@@ -249,6 +243,8 @@ function Upload(log, tokens)
     end
     if tokens[#tokens] >= Turbo.MaxTokens/2 then
         Model = SixteenK
+    else
+        Model = Turbo
     end 
     local msg = addToBuffer(log)
     local data = JSON.encode({
@@ -260,14 +256,14 @@ function Upload(log, tokens)
         temperature = Temperature,
         functions = FunctionList
     })
-    local out = io.open("E:\\Games\\Steam\\steamapps\\common\\Barotrauma\\LocalMods\\Gamemaster\\Lua\\resources\\UploadLog.json", "a")
-    if not out then
-        print("no output file found :(")
-        return
-    end
-    out:write(data .. ",\n")
-    out:close()
-    -- sendToGPT(data)
+    -- local out = io.open("E:\\Games\\Steam\\steamapps\\common\\Barotrauma\\LocalMods\\Gamemaster\\Lua\\resources\\UploadLog.json", "a")
+    -- if not out then
+    --     print("no output file found :(")
+    --     return
+    -- end
+    -- out:write(data .. ",\n")
+    -- out:close()
+    sendToGPT(data)
 
     print("message sent, Tokens: ",TokenBuffer[#TokenBuffer])
     table.remove(MessageBuffer,1)
