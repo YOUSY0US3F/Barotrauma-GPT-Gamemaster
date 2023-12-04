@@ -3,6 +3,8 @@ LogBuffer = {}
 TokenBuffer = {}
 DirectorNames = {"God?", "???!", "strange voice", "a voice", "he47fgv", "Game?", "Server?"}
 NameToCharacter = {}
+Monsters = {"Hammerhead", "Molochbaby", "Mudraptor", "Bonethresher", "Crawler", "Spineling", "Spineling_giant", "Tigerthresher"}
+
 Hook.Add("roundStart", "collect characters", function ()
     for _,character in pairs(Character.CharacterList) do
         print(character.Name)
@@ -15,6 +17,23 @@ Hook.Add("roundStart", "collect characters", function ()
         end
     end)
 end)
+
+local function loadItem(item, user)
+    if not item.OwnInventory or item.HasTag("mobilecontainer") then
+        return
+    end
+    for slot = 0, item.OwnInventory.Capacity do
+        for prefab in ItemPrefab.Prefabs do
+            if item.OwnInventory.CanBePutInSlot(prefab, slot, nil, nil) then
+                Entity.Spawner.AddItemToSpawnQueue(prefab, user.WorldPosition, nil, nil, function (spawned)
+                    item.OwnInventory.TryPutItem(spawned,slot, false, false, user, true, true)
+                end)
+                break
+            end
+        end
+    end
+end
+
 local function cacheTokens(message)
     if not next(TokenBuffer) then
         table.insert(TokenBuffer, #message/4)
@@ -62,6 +81,7 @@ function PlaceItem(arg)
     local prefab = ItemPrefab.GetItemPrefab(identifier)
     Entity.Spawner.AddItemToSpawnQueue(prefab, character.WorldPosition, nil, nil, function(item)
         print(item.Name .. " Has been spawned near " .. character.Name)
+        loadItem(item, character)
         local client = Util.FindClientCharacter(character)
         local chatMessage = ChatMessage.Create("?", "Something appeared at your feet...", ChatMessageType.ServerMessageBoxInGame, nil, nil)
         chatMessage.Color = Color(255,182,193)
@@ -95,7 +115,7 @@ end
 
 function Announce(arg)
     local message = arg.message
-    local director = "???"
+    local director = "A Loud Voice"
     for _, client in pairs(Client.ClientList) do
         local chatMessage = ChatMessage.Create(director, message, ChatMessageType.Default, nil, nil)
         chatMessage.Color = Color(255, 255, 255)
@@ -238,6 +258,7 @@ function ReplaceEquippedItem(arg)
      end
     Entity.Spawner.AddItemToSpawnQueue(prefab, character.Inventory, nil, nil, function (thing)
         character.Inventory.ForceToSlot(thing, InvSlotType.RightHand)
+        loadItem(thing, character)
         equip.Remove()
         equip.Visible = false
         local client = Util.FindClientCharacter(character)
@@ -246,6 +267,18 @@ function ReplaceEquippedItem(arg)
         Game.SendDirectChatMessage(chatMessage, client)
         Log(string.format("You turned %s\'s %s into %s", character.Name, equipName, thing.Name))
     end, true, false, InvSlotType.RightHand)
+end
+
+function SpawnSwarm(arg)
+    local count = arg.count
+    local sub = Client.ClientList[1].Character.Submarine
+    local pos = Vector2(sub.WorldPosition.X + 4000, sub.WorldPosition.Y + 4000)
+    for i = 1,count do
+        Entity.Spawner.AddCharacterToSpawnQueue(Monsters[math.random(1,#Monsters)], pos, function(ent)
+            print("Spawned: ",ent.Name)
+        end)
+    end
+    Log("You summoned a swarm")
 end
 
 return{
@@ -265,5 +298,6 @@ return{
     DumpLogs = DumpLogs,
     DeleteLogs = DeleteLogs,
     MakeIll = MakeIll,
-    ReplaceEquippedItem = ReplaceEquippedItem
+    ReplaceEquippedItem = ReplaceEquippedItem,
+    SpawnSwarm = SpawnSwarm
 }

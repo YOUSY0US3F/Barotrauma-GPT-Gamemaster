@@ -75,6 +75,15 @@ function Contains(list, object)
     return false
 end
 
+function ContainsSubString(list, sub)
+    for item in list do
+        if string.find(item,sub) then
+            return true
+        end
+    end
+    return false
+end
+
 function IndexOf(list, object)
     for i,v in ipairs(list) do
         if v == object then
@@ -154,5 +163,6 @@ return {
     TokenLength = TokenLength,
     CleanLog = CleanLog,
     CharacterStatus = CharacterStatus,
-    ParseLog = ParseLog
+    ParseLog = ParseLog,
+    ContainsSubString = ContainsSubString
 }

@@ -14,7 +14,8 @@ CallToFunction = {
     ["TeleportTo"] = Actions.TeleportCharacter,
     ["CureCharacter"] = Actions.CureCharacter,
     ["MakeIll"] = Actions.MakeIll,
-    ["ReplaceHeldItem"] = Actions.ReplaceEquippedItem
+    ["ReplaceHeldItem"] = Actions.ReplaceEquippedItem,
+    ["SummonSwarm"] = Actions.SpawnSwarm
 }
 TokenBuffer = {}
 MadPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\madGodPrompt.txt")
@@ -22,17 +23,17 @@ NormalPrompt = File.Read("LocalMods\\Gamemaster\\Lua\\resources\\prompt.txt")
 FunctionList = JSON.decode(File.Read("LocalMods/Gamemaster/Lua/resources/functions.json"))
 Prompt = NormalPrompt
 SixteenK = {
-    name = "gpt-3.5-turbo-16k",
+    name = "gpt-3.5-turbo-16k-0613",
     MaxTokens = 16000
 }
 Turbo = {
-    name = "gpt-3.5-turbo",
+    name = "gpt-3.5-turbo-0613",
     MaxTokens = 4000
 }
 Model = Turbo
 Temperature = 1.4
 MessageBuffer = {}
-FunctionLen = 3160
+FunctionLen = 3260
 
 Hook.Add("chatMessage", "admin commands", function(message, client) 
     if client.HasPermission(ClientPermissions.ManageSettings) then
@@ -134,7 +135,7 @@ local function addToBuffer(messages)
     end
     return {
         role = "user",
-        content = table.concat(MessageBuffer, ",")
+        content = table.concat(MessageBuffer, "|")
     }
 end
 
@@ -241,7 +242,7 @@ function Upload(log, tokens)
     elseif Model.name == SixteenK.name and (string.len(prompt.content) + FunctionLen)/4 < Turbo.MaxTokens/2 then
         Model = Turbo
     end
-    if tokens[#tokens] >= Turbo.MaxTokens/2 then
+    if tokens[#tokens] > Turbo.MaxTokens/2 then
         Model = SixteenK
     else
         Model = Turbo

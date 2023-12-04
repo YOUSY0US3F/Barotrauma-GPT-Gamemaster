@@ -4,7 +4,7 @@ GPT = require "GPT"
 JSON = require "json"
 Ready = false
 ElapsedTicks = 0
-Delay = math.random(5,20) * 60
+Delay = math.random(10,20) * 60
 -- LastInteracted = {}
 LastUsed = {}
 -- WasUnconsious = {}
@@ -26,7 +26,7 @@ Hook.Add("roundStart", "start", function ()
     for prefab in ItemPrefab.Prefabs do
         if Contains(prefab.Tags, "explosive") then
             print("added detector for:", tostring(prefab.Identifier))
-            Hook.Add(string.format("statusEffect.apply.%s", tostring(prefab.Identifier)), string.format("%s explodes",tostring(prefab.Identifier)), function (effect, deltaTime, 
+            Hook.Add(string.format("statusEffect.apply.%s", tostring(prefab.Identifier)), string.format("%s explodes",tostring(prefab.Identifier)), function (effect, deltaTime,
                 item, targets, worldPosition)
                 if effect.type == ActionType.Always or effect.type == ActionType.OnFire then
                     return
@@ -49,9 +49,9 @@ Hook.Add("roundStart", "start", function ()
             end
             Hook.Add("think", "send Logs", function ()
                 if ElapsedTicks >= Delay then
-                    Actions.DumpLogs(GPT.Upload)
                     print("Upload started, delay: ", Delay/60)
-                    Delay = math.random(3,20) * 60
+                    Actions.DumpLogs(GPT.Upload)
+                    Delay = math.random(10,20) * 60
                     ElapsedTicks = 0
                     return
                 end
@@ -66,10 +66,11 @@ end)
 
 Hook.Add("tryChangeClientName", "moderate player names", function (client, newName, newJob, newTeam)
     local oldname = client.Name
+    if newName == oldname then oldname = "invalid name" end
     GPT.Moderate(newName, function(response)
         local info = JSON.decode(response)
         if info.results[1].flagged then
-            local chatMessage = ChatMessage.Create("Game", string.format("Invalid Name!!!\nYou tried to change your name to %s", GPT.CleanMessage(response,newName)), 
+            local chatMessage = ChatMessage.Create("Game", string.format("Invalid Name!!!\nYou tried to change your name to %s", GPT.CleanMessage(response,newName)),
             ChatMessageType.MessageBox, nil, nil)
             chatMessage.Color = Color(255,0,0)
             Game.SendDirectChatMessage(chatMessage, client)
@@ -138,7 +139,7 @@ end)
 --         end
 --     end
 -- end)
- 
+
 
 
 Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
@@ -189,7 +190,7 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
 --     end
 --     if message == "sabotageS" then
 --         Actions.SabotageSuit({character = sender.Character.Name})
---     end
+--     endv
 --     if message == "godmode" then
 --         Actions.MakeInvincible({character = sender.Character.Name, time = 10})
 --     end
@@ -197,7 +198,7 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
 --         Actions.Revive({character = sender.Character.Name})
 --     end
 --     if message == "item" then
---         Actions.PlaceItem({item = "Potassium", character = sender.Character.Name})
+--         Actions.PlaceItem({item = "weldingtool", character = sender.Character.Name})
 --     end
 
 --     if message == "monster" then
@@ -206,6 +207,16 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
 
 --     if message == "swap" then
 --         Actions.ReplaceEquippedItem({character = sender.Character.Name, item = "smg"})
+--     end
+--     if string.find(message,"teleport") then
+--         for str in string.gmatch(message, "([^,]+)") do
+--             if str ~= "teleport" then
+--                 Actions.TeleportCharacter({character = sender.Character.Name, destination = str})
+--             end
+--         end
+--     end
+--     if message == "swarm" then
+--         Actions.SpawnSwarm({count = 5})
 --     end
 --  end)
 
@@ -218,9 +229,9 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
             return
         end
         local heldItems = Helpers.GetHeldItems(attackResult.Afflictions[1].Source)
-        local msg = string.format("%s was hit in the %s by %s %s", character.Character.Name, 
-            hitLimb.Name, attackResult.Afflictions[1].Source.Name, 
-            next(heldItems) and "with a: ".. heldItems[1] or "")  
+        local msg = string.format("%s was hit in the %s by %s %s", character.Character.Name,
+            hitLimb.Name, attackResult.Afflictions[1].Source.Name,
+            next(heldItems) and "with a: ".. heldItems[1] or "")
         print(msg)
         Actions.Log(msg)
 
@@ -236,7 +247,7 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
             print(msg)
             Actions.Log(msg)
         end
-   
+
  end)
 
  Hook.Add("inventoryPutItem", "player acquires new item or equips/unequips item", function(inventory, item, characterUser, index, swapWholeStackBool)
@@ -260,7 +271,7 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
                 table.insert(Wearing[inventory.character], item.Name)
             end
             if index == 5 or index == 6 then
-                verb = "equipped a" 
+                verb = "equipped a"
                 if not Equipped[inventory.character] then
                     Equipped[inventory.character] = {}
                 end
@@ -303,12 +314,12 @@ Hook.Add("item.use", "player uses an item", function(item, itemUser, targetLimb)
             print(msg)
             Actions.Log(msg)
         end
-        
+
     end
  end)
 
  Hook.Add("inventoryPutItem", "Player Takes item out of another Player's Inventory", function(inventory, item, characterUser, index, swapWholeStackBool)
-    if inventory.ToString() == "Barotrauma.CharacterInventory" and item.PreviousParentInventory.ToString() == "Barotrauma.CharacterInventory" and 
+    if inventory.ToString() == "Barotrauma.CharacterInventory" and item.PreviousParentInventory.ToString() == "Barotrauma.CharacterInventory" and
     item.PreviousParentInventory.character.Name~= characterUser.Name then
         local prevInv = item.PreviousParentInventory
         local msg = string.format("%s took %s's %s", characterUser.Name, prevInv.character.Name, item.Name)
@@ -374,7 +385,7 @@ end)
     if effect.type == ActionType.OnSuccess and next(targets) then
         local msg
         if targets[1].ToString() == "Barotrauma.Limb" and targets[1].character.Name ~= item.ParentInventory.Owner.Name then
-            msg = string.format("%s is cutting through %s's %s with a plasma cutter", 
+            msg = string.format("%s is cutting through %s's %s with a plasma cutter",
             item.ParentInventory.Owner.Name, targets[1].character.Name, targets[1].Name)
         else
             msg = string.format("%s is cutting through a wall", item.ParentInventory.Owner.Name)
@@ -418,7 +429,7 @@ end)
         print(msg)
         Actions.Log(msg)
 
-    end 
+    end
 end)
 
 -- old debug hook
@@ -498,10 +509,10 @@ Hook.Add("think", "Player enters new room", function ()
         if not CurrentRoom[character] or CurrentRoom[character] ~= room then
             local neighbors = Helpers.GetNeighbors(character)
             CurrentRoom[character] = room
-            local msg = string.format("%s has entered the %s %s", 
+            local msg = string.format("%s has entered the %s %s",
                 name, room,
-                next(neighbors) and "; " .. Helpers.CharacterConcat(neighbors) .. string.format(" %s there.", #neighbors == 1 and "is" or "are") or "")
-            
+                next(neighbors) and ";" .. Helpers.CharacterConcat(neighbors) .. string.format(" %s there.", #neighbors == 1 and "is" or "are") or "")
+
             Actions.Log(msg)
             print(msg)
         end
@@ -524,7 +535,7 @@ Hook.Add("think", "Hull water percentage", function ()
     end
     for hull, info in pairs(RoomWater) do
         if math.abs( info.water - hull.WaterPercentage) >= 60 then
-            local msg     
+            local msg
             if (info.water - hull.WaterPercentage) * info.trend < 0 then
                 msg = string.format( "The water level in the %s is %s!",tostring(hull.DisplayName),(info.water - hull.WaterPercentage)<0 and "increasing" or "decreasing")
                 print(msg, " trend = ",info.trend)
@@ -537,12 +548,12 @@ Hook.Add("think", "Hull water percentage", function ()
                     Actions.Log(msg)
 
                 end
-               
+
             end
             RoomWater[hull].trend = (info.water - hull.WaterPercentage)/math.abs( info.water - hull.WaterPercentage )
             RoomWater[hull].water = hull.WaterPercentage
         end
-    end 
+    end
 end)
 
 

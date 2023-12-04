@@ -1,7 +1,7 @@
 [
     {
         "name": "PlaceItem",
-        "description": "Place an item near the designated character. This can be a great way to help a character out, or provide a character tools they need to do your bidding.",
+        "description": "Place an item near the designated character.",
         "parameters": {
             "type": "object",
             "properties": {
@@ -171,6 +171,19 @@
                 "character": {
                     "type": "string",
                     "description": "Name of the character to have their item replaced"
+                }
+            }
+        }
+    },
+    {
+        "name": "SummonSwarm",
+        "description": "If you are very displeased with what is happening on the submarine, use this to change things up witha swarm of monsters",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "the number of monsters in the swarm"
                 }
             }
         }
