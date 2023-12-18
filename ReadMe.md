@@ -1,5 +1,6 @@
 # Local Setup
-
+## DEPRECATION WARNING
+OpenAI is deprecating the 3.5-turbo-0613 endponts in June 13, 2024. If I didn't remove this message by then that means I didn't get around to updating this to use the latest endpoint
 ## Dependencies:
 - have a copy of Barotrauma
 - install this mod from the workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=2559634234
